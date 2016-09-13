@@ -40,6 +40,7 @@ web_img = pygame.image.load("web66.png")
 web_img = pygame.transform.scale(web_img,(80, 80))
 x_img = pygame.image.load("cross31 (1).png")
 settings_img = pygame.image.load("settings.png")
+music_img = pygame.image.load("cd-player.png")
 os.chdir('..')
 
 #setup
@@ -123,6 +124,8 @@ while True:
         screen.blit(time_text,(0, 1060))
         screen.blit(gridtech_logo_img,(10, 10))
         screen.blit(settings_img, (15, 100))
+        music_img = pygame.transform.scale(music_img, (64, 64))
+        screen.blit(music_img, (15, 190))
         #screen.blit(calendar_img,(10, 135))
         #screen.blit(web_img,(10, 230))
         #click(app bar)
@@ -133,6 +136,9 @@ while True:
         if my > 100 and my < 164:
             if mx > 15 and mx < 79:
                 infoMenu(100, 100, 'settings', blue3, white)
+        if my > 190 and my < 254:
+            if mx > 15 and mx < 79:
+                infoMenu(100, 190, 'music ', blue3, white)
         if event.type == MOUSEBUTTONDOWN:
             if event.button == 1:
                 if my > 10 and my < 90:
