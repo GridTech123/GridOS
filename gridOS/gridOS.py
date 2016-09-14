@@ -41,6 +41,8 @@ web_img = pygame.transform.scale(web_img,(80, 80))
 x_img = pygame.image.load("cross31 (1).png")
 settings_img = pygame.image.load("settings.png")
 music_img = pygame.image.load("cd-player.png")
+notifications1_img = pygame.image.load("notifications-button.png")
+notifications2_img = pygame.image.load("turn-notifications-on-button.png")
 os.chdir('..')
 
 #setup
@@ -51,6 +53,10 @@ closeApp = False
 app = 'home'
 menu = 'home'
 rendermode = 'home'
+notifications_menu = False
+hello = 0
+notifications_list = ['','Welcome to Grid OS']
+notifications_sub_list = ['','Please remember Grid OS is in alpha']
 
 #pygame start
 from win32api import GetSystemMetrics
@@ -108,12 +114,22 @@ while True:
         global rendermode
         if type == 1:
             rendermode = 'crash1'
+
+    def newNotification(number, time):
+        pygame.draw.rect(screen, blue3, [GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 105 , 300, 55]) 
+        screen.blit(app_bar_font.render('There is a new notification!', True, white), (GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 105))
+        text = app_bar_font.render('' +str(notifications_list[number]), True, blue4)
+        screen.blit(text, (GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 75))
+        pygame.display.update()
+        pygame.time.delay(time)
+                
         
     if rendermode == 'home':
         #settings
         screen.fill(blue2)
         clock.tick(200)
         mx, my = pygame.mouse.get_pos()
+        
 
         fps_text = menu_font.render('FPS:' +str (clock.get_fps()), True, blue4)
     
@@ -128,6 +144,17 @@ while True:
         pygame.draw.rect(screen, blue3, [GetSystemMetrics(0) - 400, GetSystemMetrics(1) - 50 , 400, 50])
         pygame.draw.circle(screen, blue3, (GetSystemMetrics(0) - 400, GetSystemMetrics(1),), 50, 0)  
         screen.blit(time_text,(GetSystemMetrics(0) - 100, GetSystemMetrics(1) - 30))
+        notifications = len(notifications_list)
+        if notifications < 2:
+            notifications1_img = pygame.transform.scale(notifications1_img, (25, 25))
+            screen.blit(notifications1_img, (GetSystemMetrics(0) - 130, GetSystemMetrics(1) - 30))
+        else:
+            notifications2_img = pygame.transform.scale(notifications2_img, (25, 25))
+            screen.blit(notifications2_img, (GetSystemMetrics(0) - 130, GetSystemMetrics(1) - 30))    
+        if event.type == MOUSEBUTTONDOWN:
+            if event.button == 1:
+                if mx > GetSystemMetrics(0) - 130 and mx < GetSystemMetrics(0) - 105 and my > GetSystemMetrics(1) - 30 and my < GetSystemMetrics(1) - 5:
+                    notifications_menu = True
         #screen.blit(calendar_img,(10, 135))
         #screen.blit(web_img,(10, 230))
         #click(app bar)
@@ -175,11 +202,15 @@ while True:
                 text = menu_font.render('OH NO! We could not abort (error 1)', True, blue4)           
                 screen.blit(text, (500, 150))    
             if app == 'error 2':
-                appOpen(500, 50 , 850, 400, blue3, blue4)     
-                text = menu_font.render('OH NO! The app was force quit (error 2)', True, blue4)           
-                screen.blit(text, (500, 150))    
-                text = menu_font.render('The app may of crashed or it was force quit manually', True, blue4)           
-                screen.blit(text, (500, 200)) 
+                notifications_list.append('An app crashed!')
+                notifications_sub_list.append('The app may of crashed (error 2)')
+                newNotification(-1, 1000)
+                app = 'home'
+                #appOpen(500, 50 , 850, 400, blue3, blue4)     
+                #text = menu_font.render('OH NO! The app was force quit (error 2)', True, blue4)           
+                #screen.blit(text, (500, 150))    
+                #text = menu_font.render('The app may of crashed or it was force quit manually', True, blue4)           
+                #screen.blit(text, (500, 200)) 
             if app == 'abort':
                 appOpen(500, 50 , 800, 400, blue3, blue4)     
                 text = menu_font.render('abort successful!', True, blue4)           
@@ -265,8 +296,43 @@ while True:
                             closeApp = True
                         menu = 'home'
 
+        if notifications_menu == True:
+            pygame.draw.rect(screen, blue3, [GetSystemMetrics(0) - 400, 0 , 500, GetSystemMetrics(1) - 50])    
+            notifications = len(notifications_list)  
+            if notifications < 2:
+                screen.blit(menu_font.render('No notifications', True, white), (GetSystemMetrics(0) - 320, 10))
+            else:
+                screen.blit(app_bar_font.render('Clear', True, white), (GetSystemMetrics(0) - 60, 10)) 
+                if event.type == MOUSEBUTTONDOWN and event.button == 1:
+                    if mx > GetSystemMetrics(0) - 60 and mx < GetSystemMetrics(0):
+                        if my > 10 and my < 40:        
+                            notifications_list = ['']
+                            notifications_sub_list = ['']
+                render = True
+                render_clock = 0
+                while render == True:
+                    try:
+                        text = menu_font.render('' +str(notifications_list[render_clock]), True, white)
+                        screen.blit(text, (GetSystemMetrics(0) - 400, render_clock * 75))
+                        text = app_bar_font.render('' +str(notifications_sub_list[render_clock]), True, white)
+                        screen.blit(text, (GetSystemMetrics(0) - 400, (render_clock * 75) + 40))
+                        render_clock = render_clock + 1
+                    except:
+                        render_clock = 0
+                        render = False                
+                         
+            if event.type == MOUSEBUTTONDOWN and event.button == 1:
+                if mx < GetSystemMetrics(0) - 400:
+                    if my > 0 and my < GetSystemMetrics(1):         
+                        notifications_menu = False        
+
         if closeApp == True:
             app = 'error 2'
             closeApp = False
+
+        if hello == 1:
+            newNotification(1, 1000)
+
+    hello = hello + 1
 
     pygame.display.update()
