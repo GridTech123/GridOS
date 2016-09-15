@@ -108,10 +108,12 @@ while True:
                 global menu   
                 menu = 'home' 
 
-    def infoMenu(x, y, text, color1, color2):
-        pygame.draw.rect(screen, color1, [x, y , len(text)*16, 55])   
+    def infoMenu(x, y, text, color1, color2, rightCircle):
+        pygame.draw.rect(screen, color1, [x, y , len(text)*16 + 10, 55])   
         x_text = menu_font.render(text, True, color2)           
         screen.blit(x_text, (x, y + 5))
+        if rightCircle == True:
+            pygame.draw.circle(screen, color1, (x + len(text) * 16 + 10, y + 27), 27, 0)              
 
     def crash(type):
         global rendermode
@@ -166,16 +168,16 @@ while True:
         #sys control panel
         if my > 10 and my < 90:
             if mx > 10 and mx < 90:
-                infoMenu(100, 10, 'system panel  ', blue3, white)
+                infoMenu(100, 10, 'system panel  ', blue3, white, True)
         if my > 100 and my < 164:
             if mx > 15 and mx < 79:
-                infoMenu(100, 100, 'settings', blue3, white)
+                infoMenu(100, 100, 'settings  ', blue3, white, True)
         if my > 190 and my < 254:
             if mx > 15 and mx < 79:
-                infoMenu(100, 190, 'music ', blue3, white)
+                infoMenu(100, 190, 'music  ', blue3, white, True)
         if my > 280 and my < 370:
             if mx > 15 and mx < 79:
-                infoMenu(100, 280, 'File Explorer ', blue3, white)
+                infoMenu(100, 280, 'File Explorer ', blue3, white, True)
         if event.type == MOUSEBUTTONDOWN:
             if event.button == 1:
                 if my > 10 and my < 90:
