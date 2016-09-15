@@ -6,6 +6,7 @@ import sys
 import pickle
 import time
 import os
+import win32api
 
 pygame.init()
 screen_x = 1000
@@ -43,6 +44,8 @@ settings_img = pygame.image.load("settings.png")
 music_img = pygame.image.load("cd-player.png")
 notifications1_img = pygame.image.load("notifications-button.png")
 notifications2_img = pygame.image.load("turn-notifications-on-button.png")
+folder_img = pygame.image.load("open-folder-icon.png")
+file_img = pygame.image.load("file.png")
 os.chdir('..')
 
 #setup
@@ -141,6 +144,8 @@ while True:
         screen.blit(settings_img, (15, 100))
         music_img = pygame.transform.scale(music_img, (64, 64))
         screen.blit(music_img, (15, 190))
+        folder_img = pygame.transform.scale(folder_img, (64, 64))
+        screen.blit(folder_img, (15, 280))
         pygame.draw.rect(screen, blue3, [GetSystemMetrics(0) - 400, GetSystemMetrics(1) - 50 , 400, 50])
         pygame.draw.circle(screen, blue3, (GetSystemMetrics(0) - 400, GetSystemMetrics(1),), 50, 0)  
         screen.blit(time_text,(GetSystemMetrics(0) - 100, GetSystemMetrics(1) - 30))
@@ -168,6 +173,9 @@ while True:
         if my > 190 and my < 254:
             if mx > 15 and mx < 79:
                 infoMenu(100, 190, 'music ', blue3, white)
+        if my > 280 and my < 370:
+            if mx > 15 and mx < 79:
+                infoMenu(100, 280, 'File Explorer ', blue3, white)
         if event.type == MOUSEBUTTONDOWN:
             if event.button == 1:
                 if my > 10 and my < 90:
@@ -176,6 +184,9 @@ while True:
                 if my > 100 and my < 164:
                     if mx > 15 and mx < 79:
                         app = 'settings'
+                if my > 280 and my < 370:
+                    if mx > 15 and mx < 79:
+                        app = 'file explorer'
         if event.type == MOUSEBUTTONDOWN:
             if event.button == 3:
                 if my > 100 and my < 164:
@@ -254,6 +265,17 @@ while True:
                 appOpen(200, 50 , GetSystemMetrics(0) - 250,  GetSystemMetrics(1) - 100, blue3, blue4)      
                 text = big_font.render('Color Settings', True, blue4)           
                 screen.blit(text, (210, 100))   
+            if app == 'notificationsfordays':
+                notifications_list.append('An app crashed!')
+                notifications_sub_list.append('The app may of crashed (error 2)')
+            if app == 'file explorer':
+                appOpen(200, 50 , GetSystemMetrics(0) - 250,  GetSystemMetrics(1) - 100, blue3, blue4)   
+                text = menu_font.render('Notification Crasher', True, blue4)           
+                screen.blit(text, (280, 110)) 
+                screen.blit(file_img, (210, 100))
+                if mx > 210 and mx < 274 and my > 100 and my < 164:
+                    if event.type == MOUSEBUTTONDOWN and event.button == 1:
+                        app = 'notificationsfordays' 
 
             #appOpen(200, 50 , GetSystemMetrics(0) - 250,  GetSystemMetrics(1) - 100, blue3, blue4)
 
