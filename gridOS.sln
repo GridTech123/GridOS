@@ -5,6 +5,11 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "gridOS", "gridOS\gridOS.pyproj", "{31BF99F4-2796-4471-BD0E-307B0EE7798B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{91D7B24F-23A3-4D38-BD25-93D4C879F1B9}"
+	ProjectSection(SolutionItems) = preProject
+		WE-Palette.css = WE-Palette.css
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

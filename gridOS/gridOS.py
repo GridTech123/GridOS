@@ -129,7 +129,7 @@ while True:
             sys.exit()
 
     def appOpen(x, y, sx, sy, color1, color2):
-        pygame.draw.rect(screen, color1, [x, y , sx, sy])
+        pygame.draw.rect(screen, color1, [x, y , sx, sy - 10])
         pygame.draw.rect(screen, color2, [x, y , sx, 50])
         x_text = menu_font.render('x', True, color1)           
         screen.blit(x_text, (x + sx - 30, y + 10))  
