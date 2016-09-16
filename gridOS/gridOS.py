@@ -33,23 +33,39 @@ gray = (158, 156, 166)
 gray2 = (69, 67, 68)
 
 #images
-os.chdir('images')
-gridtech_logo_img = pygame.image.load("logo.png")
-shutdown_img = pygame.image.load("shutdown.png")
-shutdown_img = pygame.transform.scale(shutdown_img,(100, 100))
-calendar_img = pygame.image.load("calendar3.png")
-calendar_img = pygame.transform.scale(calendar_img,(80, 80))
-web_img = pygame.image.load("web66.png")
-web_img = pygame.transform.scale(web_img,(80, 80))
-x_img = pygame.image.load("cross31 (1).png")
-settings_img = pygame.image.load("settings.png")
-music_img = pygame.image.load("cd-player.png")
-notifications1_img = pygame.image.load("notifications-button.png")
-notifications2_img = pygame.image.load("turn-notifications-on-button.png")
-folder_img = pygame.image.load("open-folder-icon.png")
-file_img = pygame.image.load("file.png")
-power_img = pygame.image.load("power-button-outline.png")
-os.chdir('..')
+try:
+    os.chdir('images')
+    gridtech_logo_img = pygame.image.load("logo.png")
+    shutdown_img = pygame.image.load("shutdown.png")
+    shutdown_img = pygame.transform.scale(shutdown_img,(100, 100))
+    calendar_img = pygame.image.load("calendar3.png")
+    calendar_img = pygame.transform.scale(calendar_img,(80, 80))
+    web_img = pygame.image.load("web66.png")
+    web_img = pygame.transform.scale(web_img,(80, 80))
+    x_img = pygame.image.load("cross31 (1).png")
+    settings_img = pygame.image.load("settings.png")
+    music_img = pygame.image.load("cd-player.png")
+    notifications1_img = pygame.image.load("notifications-button.png")
+    notifications2_img = pygame.image.load("turn-notifications-on-button.png")
+    folder_img = pygame.image.load("open-folder-icon.png")
+    file_img = pygame.image.load("file.png")
+    power_img = pygame.image.load("power-button-outline.png")
+    warning_img = pygame.image.load("exclamation-mark-inside-a-circle.png")
+    os.chdir('..')
+except:
+     root = Tk()
+     root.title("Boot error")
+     root["padx"] = 20
+     root["pady"] = 20
+
+     tkinterLabel = Label(root)
+     tkinterLabel["text"] = "There was an error on startup!"
+     tkinterLabel.pack()
+     tkinterLabel2 = Label(root)
+     tkinterLabel2["text"] = "There was an issue getting images."
+     tkinterLabel2.pack()
+
+     root.mainloop()
 
 #setup
 clock = pygame.time.Clock()
@@ -235,6 +251,9 @@ while True:
                 if my > 280 and my < 370:
                     if mx > 15 and mx < 79:
                         app = 'file explorer'
+                if my > 190 and my < 254:
+                    if mx > 15 and mx < 79:
+                        app = 'music'
         if event.type == MOUSEBUTTONDOWN:
             if event.button == 3:
                 if my > 100 and my < 164:
@@ -334,6 +353,12 @@ while True:
                 if mx > 210 and mx < 274 and my > 100 and my < 164:
                     if event.type == MOUSEBUTTONDOWN and event.button == 1:
                         app = 'notificationsfordays' 
+            if app == 'music':
+                appOpen(200, 50 , GetSystemMetrics(0) - 250,  GetSystemMetrics(1) - 100, blue3, blue4)
+                screen.blit(warning_img,(GetSystemMetrics(0) / 2 - 128 + 50,  GetSystemMetrics(1) / 2 - 128 - 256))
+                screen.blit(menu_font.render('There are no songs yet!', True, white), (GetSystemMetrics(0) / 2 - 128,  GetSystemMetrics(1) / 2 - 128 + 130))
+                screen.blit(menu_font.render('(for copyright reasons)', True, white), (GetSystemMetrics(0) / 2 - 125,  GetSystemMetrics(1) / 2 - 128 + 175))
+
 
             #appOpen(200, 50 , GetSystemMetrics(0) - 250,  GetSystemMetrics(1) - 100, blue3, blue4)
 
