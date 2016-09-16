@@ -1,6 +1,8 @@
 import pygame 
 from pygame import *
 from pygame.locals import *
+from Tkinter import *
+import tkMessageBox
 import random
 import sys
 import pickle
@@ -63,24 +65,61 @@ notifications_list = ['','Welcome to Grid OS']
 notifications_sub_list = ['','Please remember Grid OS is in alpha']
 
 #pygame start
-from win32api import GetSystemMetrics
-print "Width =", GetSystemMetrics(0)
-print "Height =", GetSystemMetrics(1)
-os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % ( GetSystemMetrics(0) / 4, 1)
-pygame.init()
-screen_x = GetSystemMetrics(0)
-screen_y = GetSystemMetrics(1)
-screen = pygame.display.set_mode([screen_x,screen_y], FULLSCREEN)
+try:
+    from win32api import GetSystemMetrics
+except:
+     root = Tk()
+     root.title("Boot error")
+     root["padx"] = 20
+     root["pady"] = 20
 
-#fonts
-big_font = pygame.font.SysFont('Calibri', 80)
-menu_font = pygame.font.SysFont('Calibri', 40)
-menu_font = pygame.font.SysFont('Calibri', 40)
-app_bar_font = pygame.font.SysFont('Calibri', 25)
+     tkinterLabel = Label(root)
+     tkinterLabel["text"] = "There was an error on startup!"
+     tkinterLabel.pack()
+     tkinterLabel2 = Label(root)
+     tkinterLabel2["text"] = "Please install win32api(pywin32)"
+     tkinterLabel2.pack()
+                 
+     #tkMessageBox.showinfo(title="Tk Info box", \
+     #message="This is a Tk Info/Message box used to display output")
 
-#window settings
-#pygame.display.set_icon(logo_img)
-pygame.display.set_caption("Company Sim")
+     root.mainloop()
+
+try:  
+    print "Width =", GetSystemMetrics(0)
+    print "Height =", GetSystemMetrics(1)
+    os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % ( GetSystemMetrics(0) / 4, 1)
+    pygame.init()
+    screen_x = GetSystemMetrics(0)
+    screen_y = GetSystemMetrics(1)
+    screen = pygame.display.set_mode([screen_x,screen_y], FULLSCREEN)
+
+    #fonts
+    big_font = pygame.font.SysFont('Calibri', 80)
+    menu_font = pygame.font.SysFont('Calibri', 40)
+    menu_font = pygame.font.SysFont('Calibri', 40)
+    app_bar_font = pygame.font.SysFont('Calibri', 25)
+
+    #window settings
+    #pygame.display.set_icon(logo_img)
+    pygame.display.set_caption("Grid OS")
+except:
+     root = Tk()
+     root.title("Boot error")
+     root["padx"] = 20
+     root["pady"] = 20
+
+     tkinterLabel = Label(root)
+     tkinterLabel["text"] = "an unkown error occured on startup!"
+     tkinterLabel.pack()
+     tkinterLabel2 = Label(root)
+     tkinterLabel2["text"] = "Please be sure to use python 2.7"
+     tkinterLabel2.pack()
+                 
+     #tkMessageBox.showinfo(title="Tk Info box", \
+     #message="This is a Tk Info/Message box used to display output")
+
+     root.mainloop()
 
 #program
 while True:
