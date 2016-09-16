@@ -46,6 +46,7 @@ notifications1_img = pygame.image.load("notifications-button.png")
 notifications2_img = pygame.image.load("turn-notifications-on-button.png")
 folder_img = pygame.image.load("open-folder-icon.png")
 file_img = pygame.image.load("file.png")
+power_img = pygame.image.load("power-button-outline.png")
 os.chdir('..')
 
 #setup
@@ -162,6 +163,12 @@ while True:
             if event.button == 1:
                 if mx > GetSystemMetrics(0) - 130 and mx < GetSystemMetrics(0) - 105 and my > GetSystemMetrics(1) - 30 and my < GetSystemMetrics(1) - 5:
                     notifications_menu = True
+        power_img = pygame.transform.scale(power_img, (25, 25))
+        screen.blit(power_img, (GetSystemMetrics(0) - 160, GetSystemMetrics(1) - 30))
+        if event.type == MOUSEBUTTONDOWN:
+            if event.button == 1:
+                if mx > GetSystemMetrics(0) - 160 and mx < GetSystemMetrics(0) - 135 and my > GetSystemMetrics(1) - 30 and my < GetSystemMetrics(1) - 5:
+                    menu = 'power'
         #screen.blit(calendar_img,(10, 135))
         #screen.blit(web_img,(10, 230))
         #click(app bar)
@@ -319,6 +326,24 @@ while True:
                         if my > 150 and my < 200:
                             closeApp = True
                         menu = 'home'
+            if menu == 'power':
+                menuOpen(GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 250, 4, blue3, white)
+                sd_text = menu_font.render('Shut Down', True, white)           
+                screen.blit(sd_text, (GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 250))  
+                sd_text = menu_font.render('Restart', True, white)           
+                screen.blit(sd_text, (GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 200))  
+                sd_text = menu_font.render('Close Grid OS', True, white)           
+                screen.blit(sd_text, (GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 150))  
+                if event.type == MOUSEBUTTONDOWN and event.button == 1:
+                    if mx > GetSystemMetrics(0) - 300 and mx < GetSystemMetrics(0):
+                        if my > GetSystemMetrics(1) - 150 and my < GetSystemMetrics(1) - 100:
+                            sys.exit()
+                        if my > GetSystemMetrics(1) - 250 and my < GetSystemMetrics(1) - 200:
+                            os.system("shutdown -s")
+                            app = 'shutdown'
+                        if my > GetSystemMetrics(1) - 200 and my < GetSystemMetrics(1) - 150:
+                            os.system("shutdown -r")
+                            app = 'shutdown'
 
         if notifications_menu == True:
             pygame.draw.rect(screen, blue3, [GetSystemMetrics(0) - 400, 0 , 500, GetSystemMetrics(1) - 50])    
