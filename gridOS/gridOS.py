@@ -240,6 +240,16 @@ while True:
                 if my > 100 and my < 164:
                     if mx > 15 and mx < 79:
                         menu = 'settings'
+        if event.type == MOUSEBUTTONDOWN:
+            if event.button == 3:
+                if my > 190 and my < 254:
+                    if mx > 15 and mx < 79:
+                        menu = 'music'
+        if event.type == MOUSEBUTTONDOWN:
+            if event.button == 3:
+                if my > 280 and my < 344:
+                    if mx > 15 and mx < 79:
+                        menu = 'file explorer'
 
         if not app == 'home':
             if app == 'shutdown':
@@ -353,17 +363,58 @@ while True:
                             app = 'shutdown'
                         menu = 'home'
             if menu == 'settings':
-                menuOpen(100, 100, 3, gray, blue3)
-                text = menu_font.render('Open', True, blue3)           
+                menuOpen(100, 100, 3, blue3, white)
+                text = menu_font.render('Open', True, white)           
                 screen.blit(text, (100, 100))  
-                text = menu_font.render('Force Quit', True, blue3)           
-                screen.blit(text, (100, 150)) 
+                if app == 'settings':    
+                    text = menu_font.render('Force Quit', True, white)      
+                    screen.blit(text, (100, 150)) 
+                else:
+                    text = menu_font.render('Force Quit', True, gray)      
+                    screen.blit(text, (100, 150)) 
                 if event.type == MOUSEBUTTONDOWN and event.button == 1:
                     if mx > 100 and mx < 300:
                         if my > 100 and my < 150:
                             app = 'settings'
                         if my > 150 and my < 200:
-                            closeApp = True
+                            if app == 'settings': 
+                                closeApp = True
+                        menu = 'home'
+            if menu == 'music':
+                menuOpen(100, 190, 3, blue3, white)
+                text = menu_font.render('Open', True, white)           
+                screen.blit(text, (100, 190))   
+                if app == 'music':    
+                    text = menu_font.render('Force Quit', True, white)      
+                    screen.blit(text, (100, 240)) 
+                else:
+                    text = menu_font.render('Force Quit', True, gray)      
+                    screen.blit(text, (100, 240)) 
+                if event.type == MOUSEBUTTONDOWN and event.button == 1:
+                    if mx > 100 and mx < 300:
+                        if my > 190 and my < 240:
+                            app = 'music'
+                        if my > 240 and my < 290:
+                            if app == 'music': 
+                                closeApp = True
+                        menu = 'home'
+            if menu == 'file explorer':
+                menuOpen(100, 280, 3, blue3, white)
+                text = menu_font.render('Open', True, white)           
+                screen.blit(text, (100, 280))   
+                if app == 'file explorer':    
+                    text = menu_font.render('Force Quit', True, white)      
+                    screen.blit(text, (100, 330)) 
+                else:
+                    text = menu_font.render('Force Quit', True, gray)      
+                    screen.blit(text, (100, 330)) 
+                if event.type == MOUSEBUTTONDOWN and event.button == 1:
+                    if mx > 100 and mx < 300:
+                        if my > 280 and my < 330:
+                            app = 'file explorer'
+                        if my > 330 and my < 380:
+                            if app == 'file explorer': 
+                                closeApp = True
                         menu = 'home'
             if menu == 'power':
                 menuOpen(GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 250, 4, blue3, white)
