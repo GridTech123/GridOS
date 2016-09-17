@@ -1,6 +1,26 @@
-import pygame 
-from pygame import *
-from pygame.locals import *
+try:
+    import pygame
+    from pygame import *
+    from pygame.locals import *
+except:
+     from Tkinter import *
+     import tkMessageBox
+     root = Tk()
+     root.title("Boot error")
+     root["padx"] = 20
+     root["pady"] = 20
+
+     tkinterLabel = Label(root)
+     tkinterLabel["text"] = "There was an error on startup!"
+     tkinterLabel.pack()
+     tkinterLabel2 = Label(root)
+     tkinterLabel2["text"] = "Please install Pygame"
+     tkinterLabel2.pack()
+                 
+     #tkMessageBox.showinfo(title="Tk Info box", \
+     #message="This is a Tk Info/Message box used to display output")
+
+     root.mainloop()
 from Tkinter import *
 import tkMessageBox
 import random
@@ -8,7 +28,6 @@ import sys
 import pickle
 import time
 import os
-import win32api
 
 pygame.init()
 screen_x = 1000
