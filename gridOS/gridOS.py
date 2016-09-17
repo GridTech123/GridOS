@@ -74,11 +74,17 @@ clock = pygame.time.Clock()
 closeApp = False
 app = 'home'
 menu = 'home'
-rendermode = 'home'
+rendermode = 'welcome 1'
 notifications_menu = False
 hello = 0
 notifications_list = ['','Welcome to Grid OS']
 notifications_sub_list = ['','Please remember Grid OS is in alpha']
+welcomeColor1 = 0
+welcomeColor2 = 255
+welcomeColor3 = 255
+colorOp = 1
+changeHello = True
+changeHelloTimer = 50
 
 #pygame start
 try:
@@ -114,7 +120,7 @@ try:
     big_font = pygame.font.SysFont('Calibri', 80)
     menu_font = pygame.font.SysFont('Calibri', 40)
     menu_font = pygame.font.SysFont('Calibri', 40)
-    app_bar_font = pygame.font.SysFont('Calibri', 25)
+    app_bar_font = pygame.font.SysFont('Calibri', 25)   
 
     #window settings
     #pygame.display.set_icon(logo_img)
@@ -184,7 +190,194 @@ while True:
         pygame.display.update()
         pygame.time.delay(time)
                 
-        
+    if rendermode == 'welcome 1': #(40, 181, 166) (0, 0, 255)
+        if colorOp == 1:
+            if welcomeColor1 == 0 and welcomeColor2 == 0 and welcomeColor3 == 255:
+                colorOp = 2
+            if welcomeColor1 > 0:
+                welcomeColor1 = welcomeColor1 - 1
+            if welcomeColor2 > 0:
+                welcomeColor2 = welcomeColor2 - 1
+            if welcomeColor3 < 255:
+                welcomeColor3 = welcomeColor3 + 1
+        if colorOp == 2:
+            if welcomeColor1 == 40 and welcomeColor2 == 181 and welcomeColor3 == 166:
+                colorOp = 1
+            if welcomeColor1 < 40:
+                welcomeColor1 = welcomeColor1 + 1
+            if welcomeColor2 < 181:
+                welcomeColor2 = welcomeColor2 + 1
+            if welcomeColor3 > 166:
+                welcomeColor3 = welcomeColor3 - 1
+        screen.fill((welcomeColor1, welcomeColor2, welcomeColor3))
+        clock.tick(200)
+        mx, my = pygame.mouse.get_pos()
+
+        pygame.draw.rect(screen, blue3, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2, GetSystemMetrics(0) / 2, GetSystemMetrics(1) / 2])       
+
+        if changeHelloTimer == 50:
+            changeHello = True
+
+        if changeHello == True:
+            helloOp = random.randint(1, 10)
+            if helloOp == 1:
+                text = big_font.render('Hello', True, white)           
+                #screen.blit(text, (GetSystemMetrics(0) / 2 - 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2))
+            if helloOp == 2:
+                text = big_font.render('Ciao', True, white)           
+                #screen.blit(text, (GetSystemMetrics(0) / 2 - 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2))
+            if helloOp == 3:
+                text = big_font.render('buna', True, white)           
+                #screen.blit(text, (GetSystemMetrics(0) / 2 - 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2))
+            if helloOp == 4:
+                text = big_font.render('dobry den', True, white)           
+                #screen.blit(text, (GetSystemMetrics(0) / 2 - 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2))
+            if helloOp == 5:
+                text = big_font.render('Hola', True, white)           
+                #screen.blit(text, (GetSystemMetrics(0) / 2 - 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2))
+            if helloOp == 6:
+                text = big_font.render('Hej', True, white)           
+                #screen.blit(text, (GetSystemMetrics(0) / 2 - 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2))
+            if helloOp == 7:
+                text = big_font.render('Merhaba', True, white)           
+                #screen.blit(text, (GetSystemMetrics(0) / 2 - 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2))
+            if helloOp == 8:
+                text = big_font.render('Salut', True, white)           
+                #screen.blit(text, (GetSystemMetrics(0) / 2 - 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2))
+            if helloOp == 9:
+                text = big_font.render('Hallo', True, white)           
+                #screen.blit(text, (GetSystemMetrics(0) / 2 - 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2))
+            if helloOp == 10:
+                text = big_font.render('labas', True, white)           
+                #screen.blit(text, (GetSystemMetrics(0) / 2 - 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2))
+            changeHelloTimer = 0
+            changeHello = False
+        screen.blit(text, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2))
+        changeHelloTimer = changeHelloTimer + 1
+
+        text2 = menu_font.render('Have you used Grid OS before?', True, white)       
+        screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 100))     
+
+        pygame.draw.rect(screen, blue4, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200, 100, 50])  
+        pygame.draw.rect(screen, blue4, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 300, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200, 100, 50]) 
+
+        text2 = menu_font.render('Yes', True, white)       
+        screen.blit(text2, ((GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200, 100, 50))) 
+
+        text2 = menu_font.render('No', True, white)       
+        screen.blit(text2, ((GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 300, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200, 100, 50))) 
+
+        if event.type == MOUSEBUTTONDOWN:
+            if event.button == 1:
+                if mx > GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 300 and mx < GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 300 + 100 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200 + 50:
+                    rendermode = 'welcome 2'
+
+        if event.type == MOUSEBUTTONDOWN:
+            if event.button == 1:
+                if mx > GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 and mx < GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 + 100 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200 + 50:
+                    rendermode = 'home'     
+
+        time_text = app_bar_font.render((time.strftime('%I:%M %p')), True, white)
+        pygame.draw.rect(screen, blue3, [GetSystemMetrics(0) - 400, GetSystemMetrics(1) - 50 , 400, 50])
+        pygame.draw.circle(screen, blue3, (GetSystemMetrics(0) - 400, GetSystemMetrics(1),), 50, 0)  
+        screen.blit(time_text,(GetSystemMetrics(0) - 100, GetSystemMetrics(1) - 30))
+        power_img = pygame.transform.scale(power_img, (25, 25))
+        screen.blit(power_img, (GetSystemMetrics(0) - 160, GetSystemMetrics(1) - 30))
+        if event.type == MOUSEBUTTONDOWN:
+            if event.button == 1:
+                if mx > GetSystemMetrics(0) - 160 and mx < GetSystemMetrics(0) - 135 and my > GetSystemMetrics(1) - 30 and my < GetSystemMetrics(1) - 5:
+                    menu = 'power'
+        if menu == 'power':
+            menuOpen(GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 250, 4, blue3, white)
+            sd_text = menu_font.render('Shut Down', True, white)           
+            screen.blit(sd_text, (GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 250))  
+            sd_text = menu_font.render('Restart', True, white)           
+            screen.blit(sd_text, (GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 200))  
+            sd_text = menu_font.render('Close Grid OS', True, white)           
+            screen.blit(sd_text, (GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 150))  
+            if event.type == MOUSEBUTTONDOWN and event.button == 1:
+                if mx > GetSystemMetrics(0) - 300 and mx < GetSystemMetrics(0):
+                    if my > GetSystemMetrics(1) - 150 and my < GetSystemMetrics(1) - 100:
+                        sys.exit()
+                    if my > GetSystemMetrics(1) - 250 and my < GetSystemMetrics(1) - 200:
+                        os.system("shutdown -s")
+                        app = 'shutdown'
+                    if my > GetSystemMetrics(1) - 200 and my < GetSystemMetrics(1) - 150:
+                        os.system("shutdown -r")
+                        app = 'shutdown'                
+
+        pygame.display.update()
+
+    if rendermode == 'welcome 2':
+        if colorOp == 1:
+            if welcomeColor1 == 0 and welcomeColor2 == 0 and welcomeColor3 == 255:
+                colorOp = 2
+            if welcomeColor1 > 0:
+                welcomeColor1 = welcomeColor1 - 1
+            if welcomeColor2 > 0:
+                welcomeColor2 = welcomeColor2 - 1
+            if welcomeColor3 < 255:
+                welcomeColor3 = welcomeColor3 + 1
+        if colorOp == 2:
+            if welcomeColor1 == 40 and welcomeColor2 == 181 and welcomeColor3 == 166:
+                colorOp = 1
+            if welcomeColor1 < 40:
+                welcomeColor1 = welcomeColor1 + 1
+            if welcomeColor2 < 181:
+                welcomeColor2 = welcomeColor2 + 1
+            if welcomeColor3 > 166:
+                welcomeColor3 = welcomeColor3 - 1
+        screen.fill((welcomeColor1, welcomeColor2, welcomeColor3))
+        clock.tick(200)
+        mx, my = pygame.mouse.get_pos()
+
+        pygame.draw.rect(screen, blue3, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2, GetSystemMetrics(0) / 2, GetSystemMetrics(1) / 2])       
+
+        text2 = big_font.render('Why Hello!', True, white)       
+        screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 100))
+        text2 = menu_font.render('Welcome to the Grid OS community!', True, white)       
+        screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200))
+        text2 = menu_font.render('The tutorial is still being developed', True, white)       
+        screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250))
+
+        pygame.draw.rect(screen, blue4, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 300, 210, 50]) 
+        text2 = menu_font.render('Ok lets start!', True, white)       
+        screen.blit(text2, ((GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 300, 100, 50))) 
+
+        if event.type == MOUSEBUTTONDOWN:
+            if event.button == 1:
+                if mx > GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 and mx < GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 + 210 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 300 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 300 + 50:
+                    rendermode = 'home'     
+
+        time_text = app_bar_font.render((time.strftime('%I:%M %p')), True, white)
+        pygame.draw.rect(screen, blue3, [GetSystemMetrics(0) - 400, GetSystemMetrics(1) - 50 , 400, 50])
+        pygame.draw.circle(screen, blue3, (GetSystemMetrics(0) - 400, GetSystemMetrics(1),), 50, 0)  
+        screen.blit(time_text,(GetSystemMetrics(0) - 100, GetSystemMetrics(1) - 30))
+        power_img = pygame.transform.scale(power_img, (25, 25))
+        screen.blit(power_img, (GetSystemMetrics(0) - 160, GetSystemMetrics(1) - 30))
+        if event.type == MOUSEBUTTONDOWN:
+            if event.button == 1:
+                if mx > GetSystemMetrics(0) - 160 and mx < GetSystemMetrics(0) - 135 and my > GetSystemMetrics(1) - 30 and my < GetSystemMetrics(1) - 5:
+                    menu = 'power'
+        if menu == 'power':
+            menuOpen(GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 250, 4, blue3, white)
+            sd_text = menu_font.render('Shut Down', True, white)           
+            screen.blit(sd_text, (GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 250))  
+            sd_text = menu_font.render('Restart', True, white)           
+            screen.blit(sd_text, (GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 200))  
+            sd_text = menu_font.render('Close Grid OS', True, white)           
+            screen.blit(sd_text, (GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 150))  
+            if event.type == MOUSEBUTTONDOWN and event.button == 1:
+                if mx > GetSystemMetrics(0) - 300 and mx < GetSystemMetrics(0):
+                    if my > GetSystemMetrics(1) - 150 and my < GetSystemMetrics(1) - 100:
+                        sys.exit()
+                    if my > GetSystemMetrics(1) - 250 and my < GetSystemMetrics(1) - 200:
+                        os.system("shutdown -s")
+                        app = 'shutdown'
+                    if my > GetSystemMetrics(1) - 200 and my < GetSystemMetrics(1) - 150:
+                        os.system("shutdown -r")
+                        app = 'shutdown'
+        pygame.display.update()
     if rendermode == 'home':
         #settings
         screen.fill(blue2)
