@@ -57,7 +57,7 @@ try:
     gridtech_logo_img = pygame.image.load("logo.png")
     shutdown_img = pygame.image.load("shutdown.png")
     shutdown_img = pygame.transform.scale(shutdown_img,(100, 100))
-    calendar_img = pygame.image.load("calendar3.png")
+    calendar_img = pygame.image.load("calendar.png")
     calendar_img = pygame.transform.scale(calendar_img,(80, 80))
     web_img = pygame.image.load("web66.png")
     web_img = pygame.transform.scale(web_img,(80, 80))
