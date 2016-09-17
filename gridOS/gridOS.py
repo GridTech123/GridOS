@@ -339,14 +339,16 @@ while True:
         screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200))
         text2 = menu_font.render('The tutorial is still being developed', True, white)       
         screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250))
+        text2 = menu_font.render('Grid OS is also in alpha', True, (welcomeColor1, welcomeColor2, welcomeColor3))       
+        screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 300))
 
-        pygame.draw.rect(screen, blue4, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 300, 210, 50]) 
+        pygame.draw.rect(screen, blue4, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 350, 210, 50]) 
         text2 = menu_font.render('Ok lets start!', True, white)       
-        screen.blit(text2, ((GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 300, 100, 50))) 
+        screen.blit(text2, ((GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 350, 100, 50))) 
 
         if event.type == MOUSEBUTTONDOWN:
             if event.button == 1:
-                if mx > GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 and mx < GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 + 210 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 300 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 300 + 50:
+                if mx > GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 and mx < GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 + 210 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 350 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 350 + 50:
                     rendermode = 'home'     
 
         time_text = app_bar_font.render((time.strftime('%I:%M %p')), True, white)
@@ -390,7 +392,7 @@ while True:
         #app bar
         #time = str(time)
         time_text = app_bar_font.render((time.strftime('%I:%M %p')), True, white)
-        pygame.draw.rect(screen, blue3, [0, 0 , 100, 1080])
+        pygame.draw.rect(screen, blue3, [0, 0 , 100, GetSystemMetrics(1)])
         screen.blit(gridtech_logo_img,(10, 10))
         screen.blit(settings_img, (15, 100))
         music_img = pygame.transform.scale(music_img, (64, 64))
