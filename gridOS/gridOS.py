@@ -399,6 +399,95 @@ while True:
                         os.system("shutdown -r")
                         app = 'shutdown'
         pygame.display.update()
+
+    if rendermode == 'shutdown':
+        if colorOp == 1:
+            if welcomeColor1 == 0 and welcomeColor2 == 0 and welcomeColor3 == 255:
+                colorOp = 2
+            if welcomeColor1 > 0:
+                welcomeColor1 = welcomeColor1 - 1
+            if welcomeColor2 > 0:
+                welcomeColor2 = welcomeColor2 - 1
+            if welcomeColor3 < 255:
+                welcomeColor3 = welcomeColor3 + 1
+        if colorOp == 2:
+            if welcomeColor1 == 40 and welcomeColor2 == 181 and welcomeColor3 == 166:
+                colorOp = 1
+            if welcomeColor1 < 40:
+                welcomeColor1 = welcomeColor1 + 1
+            if welcomeColor2 < 181:
+                welcomeColor2 = welcomeColor2 + 1
+            if welcomeColor3 > 166:
+                welcomeColor3 = welcomeColor3 - 1
+        screen.fill((welcomeColor1, welcomeColor2, welcomeColor3))
+        clock.tick(200)
+        mx, my = pygame.mouse.get_pos()
+
+        pygame.draw.rect(screen, blue3, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2, GetSystemMetrics(0) / 2, GetSystemMetrics(1) / 2])       
+
+        text2 = big_font.render('Grid OS is shutting down!', True, white)       
+        screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text2)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 100))
+        text2 = menu_font.render('Be sure you saved all your data!', True, white)       
+        screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text2)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200))
+
+        pygame.draw.rect(screen, blue4, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 350, 300, 50]) 
+        text2 = menu_font.render('Abort shutdown!', True, white)       
+        screen.blit(text2, ((GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 350, 100, 50))) 
+
+        if event.type == MOUSEBUTTONDOWN:
+            if event.button == 1:
+                if mx > GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 and mx < GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 + 300 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 350 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 350 + 50:
+                    shutdown_a = os.system("shutdown -a")
+                    if shutdown_a == 1116:
+                        rendermode = 'error 1'
+                    else:
+                        rendermode = 'home'
+                        app = 'abort'  
+
+        pygame.display.update()
+
+    if rendermode == 'error 1':
+        if colorOp == 1:
+            if welcomeColor1 == 0 and welcomeColor2 == 0 and welcomeColor3 == 255:
+                colorOp = 2
+            if welcomeColor1 > 0:
+                welcomeColor1 = welcomeColor1 - 1
+            if welcomeColor2 > 0:
+                welcomeColor2 = welcomeColor2 - 1
+            if welcomeColor3 < 255:
+                welcomeColor3 = welcomeColor3 + 1
+        if colorOp == 2:
+            if welcomeColor1 == 40 and welcomeColor2 == 181 and welcomeColor3 == 166:
+                colorOp = 1
+            if welcomeColor1 < 40:
+                welcomeColor1 = welcomeColor1 + 1
+            if welcomeColor2 < 181:
+                welcomeColor2 = welcomeColor2 + 1
+            if welcomeColor3 > 166:
+                welcomeColor3 = welcomeColor3 - 1
+        screen.fill((welcomeColor1, welcomeColor2, welcomeColor3))
+        clock.tick(200)
+        mx, my = pygame.mouse.get_pos()
+
+        pygame.draw.rect(screen, blue3, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 - 150, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2, GetSystemMetrics(0) / 2 + 300, GetSystemMetrics(1) / 2])       
+
+        text2 = big_font.render('Error 1 (1116) no shutdown in progress', True, white)       
+        screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text2)) * 20) - 150, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 100))
+        text2 = menu_font.render('Thats weird? There was no shutdown in progress.', True, white)       
+        screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text2)) * 20) - 150, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200))
+
+        pygame.draw.rect(screen, blue4, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 - 150, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 350, 300, 50]) 
+        text2 = menu_font.render('Go back to Grid OS', True, white)       
+        screen.blit(text2, ((GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 - 150, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 350, 100, 50))) 
+
+        if event.type == MOUSEBUTTONDOWN:
+            if event.button == 1:
+                if mx > GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 - 150and mx < GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 - 150 + 300 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 350 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 350 + 50:
+                    rendermode = 'home'
+
+        pygame.display.update()        
+        
+
     if rendermode == 'home':
         #settings
         screen.fill(blue2)
@@ -486,19 +575,20 @@ while True:
 
         if not app == 'home':
             if app == 'shutdown':
-                appOpen(500, 50 , 800, 400, blue3, blue4)     
-                text = menu_font.render('LOOKS LIKE GridOS IS SHUTTING DOWN!', True, blue4)           
-                screen.blit(text, (500, 150))    
-                pygame.draw.rect(screen, blue2, [510, 300, 110, 50]) 
-                text = menu_font.render('ABORT', True, blue4)           
-                screen.blit(text, (510, 300))                        
-                if mx > 510 and mx < 510 + 110 and my > 300 and my < 300 + 50:
-                    if event.type == MOUSEBUTTONDOWN and event.button == 1:
-                        shutdown_a = os.system("shutdown -a")
-                        if shutdown_a == 1116:
-                            app = 'error 1'
-                        else:
-                            app = 'abort'
+                rendermode = 'shutdown'
+                #appOpen(500, 50 , 800, 400, blue3, blue4)     
+                #text = menu_font.render('LOOKS LIKE GridOS IS SHUTTING DOWN!', True, blue4)           
+                #screen.blit(text, (500, 150))    
+                #pygame.draw.rect(screen, blue2, [510, 300, 110, 50]) 
+                #text = menu_font.render('ABORT', True, blue4)           
+                #screen.blit(text, (510, 300))                        
+                #if mx > 510 and mx < 510 + 110 and my > 300 and my < 300 + 50:
+                 #   if event.type == MOUSEBUTTONDOWN and event.button == 1:
+                  #      shutdown_a = os.system("shutdown -a")
+                   #     if shutdown_a == 1116:
+                    #        app = 'error 1'
+                     #   else:
+                      #      app = 'abort'
             if app == 'error 1':
                 appOpen(500, 50 , 800, 400, blue3, blue4)     
                 text = menu_font.render('OH NO! We could not abort (error 1)', True, blue4)           
