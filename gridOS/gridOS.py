@@ -51,6 +51,8 @@ green3 = (0,100,0)
 gray = (158, 156, 166)
 gray2 = (69, 67, 68)
 
+#
+
 #images
 try:
     os.chdir('images')
