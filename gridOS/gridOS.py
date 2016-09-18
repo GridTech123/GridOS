@@ -104,6 +104,13 @@ welcomeColor3 = 255
 colorOp = 1
 changeHello = True
 changeHelloTimer = 50
+reminderList = []
+reminderTimeList = []
+notificationName = ''
+notificationInfo = ''
+notificationTimeMin = 0
+notificationTimeHour = 1
+editNotificationName = False
 
 #pygame start
 try:
@@ -209,6 +216,9 @@ while True:
         pygame.display.update()
         pygame.time.delay(time)
                 
+    def window(border, x, y):
+        if border == False:
+            screen = pygame.display.set_mode([x,y], NOFRAME)
     if rendermode == 'welcome 1': #(40, 181, 166) (0, 0, 255)
         if colorOp == 1:
             if welcomeColor1 == 0 and welcomeColor2 == 0 and welcomeColor3 == 255:
@@ -507,6 +517,8 @@ while True:
         screen.blit(music_img, (15, 190))
         folder_img = pygame.transform.scale(folder_img, (64, 64))
         screen.blit(folder_img, (15, 280))
+        #calendar_img = pygame.transform.scale(calendar_img, (64, 64))
+        #screen.blit(calendar_img, (15, 370))
         pygame.draw.rect(screen, blue3, [GetSystemMetrics(0) - 400, GetSystemMetrics(1) - 50 , 400, 50])
         pygame.draw.circle(screen, blue3, (GetSystemMetrics(0) - 400, GetSystemMetrics(1),), 50, 0)  
         screen.blit(time_text,(GetSystemMetrics(0) - 100, GetSystemMetrics(1) - 30))
@@ -543,6 +555,9 @@ while True:
         if my > 280 and my < 370:
             if mx > 15 and mx < 79:
                 infoMenu(100, 280, 'File Explorer ', blue3, white, True)
+        #if my > 370 and my < 460:
+            #if mx > 15 and mx < 79:
+                #infoMenu(100, 370, 'Reminders   ', blue3, white, True)
         if event.type == MOUSEBUTTONDOWN:
             if event.button == 1:
                 if my > 10 and my < 90:
@@ -557,6 +572,9 @@ while True:
                 if my > 190 and my < 254:
                     if mx > 15 and mx < 79:
                         app = 'music'
+                #if my > 370 and my < 460:
+                 #   if mx > 15 and mx < 79:
+                  #      app = 'reminders'
         if event.type == MOUSEBUTTONDOWN:
             if event.button == 3:
                 if my > 100 and my < 164:
@@ -662,7 +680,103 @@ while True:
                 screen.blit(warning_img,(GetSystemMetrics(0) / 2 - 128 + 50,  GetSystemMetrics(1) / 2 - 128 - 256))
                 screen.blit(menu_font.render('There are no songs yet!', True, white), (GetSystemMetrics(0) / 2 - 128,  GetSystemMetrics(1) / 2 - 128 + 130))
                 screen.blit(menu_font.render('(for copyright reasons)', True, white), (GetSystemMetrics(0) / 2 - 125,  GetSystemMetrics(1) / 2 - 128 + 175))
-
+            if app == 'reminders':
+                 appOpen(200, 50 , GetSystemMetrics(0) - 250,  GetSystemMetrics(1) - 100, blue3, blue4)
+                 screen.blit(big_font.render('Current reminders:', True, white), (210,  100))
+                 screen.blit(menu_font.render('Reminder:', True, white), (210,  170))
+                 render = True
+                 render_clock = 0
+                 while render == True:
+                     try:
+                         if not reminderList[render_clock] == '':
+                            pygame.draw.rect(screen, blue4, [210, 210 + (render_clock * 75), 300, 60]) 
+                         text = menu_font.render('' +str(reminderList[render_clock]), True, white)
+                         screen.blit(text, (210, 210 + (render_clock * 75)))
+                         text = app_bar_font.render('at: ' +str(reminderTimeList[render_clock]), True, white)
+                         screen.blit(text, (210, 210 + ((render_clock * 75) + 40)))
+                         render_clock = render_clock + 1
+                     except:
+                         render_clock = 0
+                         render = False                
+                 pygame.draw.rect(screen, blue2, [900, 100, 100, 50]) 
+                 text = menu_font.render('New', True, blue4)           
+                 screen.blit(text, (900, 100))                        
+                 if mx > 900 and mx < 900 + 100 and my > 100 and my < 100 + 50:
+                     if event.type == MOUSEBUTTONDOWN and event.button == 1:
+                         app = 'new reminder'
+            if app == 'new reminder':
+                 appOpen(200, 50 , GetSystemMetrics(0) - 250,  GetSystemMetrics(1) - 100, blue3, blue4)
+                 pygame.draw.rect(screen, blue2, [210, 100, 100, 50]) 
+                 text = menu_font.render('Back', True, blue4)           
+                 screen.blit(text, (210, 100))                        
+                 if mx > 210 and mx < 210 + 100 and my > 100 and my < 100 + 50:
+                     if event.type == MOUSEBUTTONDOWN and event.button == 1:
+                         app = 'reminders'
+                 pygame.draw.rect(screen, blue2, [200, 200, 800, 50])
+                 if mx > 200 and mx < 200 + 800 and my > 200 and my < 200 + 50:
+                     if event.type == MOUSEBUTTONDOWN and event.button == 1:
+                         editNotificationName = True
+                 if editNotificationName == True:
+                     if event.type == KEYDOWN:
+                        if event.key == pygame.K_a:
+                            notificationName = notificationName + 'a'
+                        if event.key == pygame.K_b:
+                            notificationName = notificationName + 'b'
+                        if event.key == pygame.K_c:
+                            notificationName = notificationName + 'c'
+                        if event.key == pygame.K_d:
+                            notificationName = notificationName + 'd'
+                        if event.key == pygame.K_e:
+                            notificationName = notificationName + 'e'
+                        if event.key == pygame.K_f:
+                            notificationName = notificationName + 'f'
+                        if event.key == pygame.K_g:
+                            notificationName = notificationName + 'g'
+                        if event.key == pygame.K_h:
+                            notificationName = notificationName + 'h'
+                        if event.key == pygame.K_i:
+                            notificationName = notificationName + 'i'
+                        if event.key == pygame.K_j:
+                            notificationName = notificationName + 'j'
+                        if event.key == pygame.K_k:
+                            notificationName = notificationName + 'k'
+                        if event.key == pygame.K_l:
+                            notificationName = notificationName + 'l'
+                        if event.key == pygame.K_m:
+                            notificationName = notificationName + 'm'
+                        if event.key == pygame.K_n:
+                            notificationName = notificationName + 'n'
+                        if event.key == pygame.K_o:
+                            notificationName = notificationName + 'o'
+                        if event.key == pygame.K_p:
+                            notificationName = notificationName + 'p'
+                        if event.key == pygame.K_q:
+                            notificationName = notificationName + 'q'
+                        if event.key == pygame.K_r:
+                            notificationName = notificationName + 'r'
+                        if event.key == pygame.K_s:
+                            notificationName = notificationName + 's'
+                        if event.key == pygame.K_t:
+                            notificationName = notificationName + 't'
+                        if event.key == pygame.K_u:
+                            notificationName = notificationName + 'u'
+                        if event.key == pygame.K_v:
+                            notificationName = notificationName + 'v'
+                        if event.key == pygame.K_w:
+                            notificationName = notificationName + 'w'
+                        if event.key == pygame.K_x:
+                            notificationName = notificationName + 'x'
+                        if event.key == pygame.K_y:
+                            notificationName = notificationName + 'y'
+                        if event.key == pygame.K_z:
+                            notificationName = notificationName + 'z'
+                        if event.key == pygame.K_SPACE:
+                            notificationName = notificationName + ' '
+                        if event.key == pygame.K_BACKSPACE:
+                            notificationName = ''
+                        pygame.time.delay(100)
+                 screen.blit(menu_font.render(''+str(notificationName), True, white),(200, 200))
+                    
 
             #appOpen(200, 50 , GetSystemMetrics(0) - 250,  GetSystemMetrics(1) - 100, blue3, blue4)
 
