@@ -21,5 +21,4 @@ cx_Freeze.setup(name = 'Grid OS', version = '1.0.0', options = {'build_exe': {'p
 "settings.png",
 "shutdown.png",
 "turn-notifications-on-button.png",
-"web66.png",
-"gridtech_logo_v2.jpg"]}}, executables = executables)
+"web66.png",]}}, executables = executables)

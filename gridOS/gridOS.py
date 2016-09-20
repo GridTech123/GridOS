@@ -109,10 +109,8 @@ changeHelloTimer = 50
 reminderList = []
 reminderTimeList = []
 notificationName = ''
-notificationInfo = ''
-notificationTimeMin = 0
-notificationTimeHour = 1
-editNotificationName = False
+notificationName2 = ''
+editNotificationName = 0
 
 #pygame start
 try:
@@ -286,7 +284,7 @@ while True:
         screen.blit(text, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2))
         changeHelloTimer = changeHelloTimer + 1
 
-        text2 = menu_font.render('Have you used Grid OS before?', True, white)       
+        text2 = menu_font.render('Do you have a Grid OS account?', True, white)       
         screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 100))     
 
         pygame.draw.rect(screen, blue4, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200, 100, 50])  
@@ -301,12 +299,12 @@ while True:
         if event.type == MOUSEBUTTONDOWN:
             if event.button == 1:
                 if mx > GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 300 and mx < GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 300 + 100 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200 + 50:
-                    rendermode = 'welcome 2'
+                    rendermode = 'welcome 1-1'
 
         if event.type == MOUSEBUTTONDOWN:
             if event.button == 1:
                 if mx > GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 and mx < GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 + 100 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200 + 50:
-                    rendermode = 'home'     
+                    rendermode = 'welcome 2-1'     
 
         time_text = app_bar_font.render((time.strftime('%I:%M %p')), True, white)
         pygame.draw.rect(screen, blue3, [GetSystemMetrics(0) - 400, GetSystemMetrics(1) - 50 , 400, 50])
@@ -339,78 +337,436 @@ while True:
 
         pygame.display.update()
 
-    if rendermode == 'welcome 2':
-        if colorOp == 1:
-            if welcomeColor1 == 0 and welcomeColor2 == 0 and welcomeColor3 == 255:
-                colorOp = 2
-            if welcomeColor1 > 0:
-                welcomeColor1 = welcomeColor1 - 1
-            if welcomeColor2 > 0:
-                welcomeColor2 = welcomeColor2 - 1
-            if welcomeColor3 < 255:
-                welcomeColor3 = welcomeColor3 + 1
-        if colorOp == 2:
-            if welcomeColor1 == 40 and welcomeColor2 == 181 and welcomeColor3 == 166:
-                colorOp = 1
-            if welcomeColor1 < 40:
-                welcomeColor1 = welcomeColor1 + 1
-            if welcomeColor2 < 181:
-                welcomeColor2 = welcomeColor2 + 1
-            if welcomeColor3 > 166:
-                welcomeColor3 = welcomeColor3 - 1
-        screen.fill((welcomeColor1, welcomeColor2, welcomeColor3))
-        clock.tick(200)
-        mx, my = pygame.mouse.get_pos()
+    if rendermode == 'welcome 1-1':
+                 if colorOp == 1:
+                     if welcomeColor1 == 0 and welcomeColor2 == 0 and welcomeColor3 == 255:
+                         colorOp = 2
+                     if welcomeColor1 > 0:
+                         welcomeColor1 = welcomeColor1 - 1
+                     if welcomeColor2 > 0:
+                         welcomeColor2 = welcomeColor2 - 1
+                     if welcomeColor3 < 255:
+                         welcomeColor3 = welcomeColor3 + 1
+                 if colorOp == 2:
+                     if welcomeColor1 == 40 and welcomeColor2 == 181 and welcomeColor3 == 166:
+                         colorOp = 1
+                     if welcomeColor1 < 40:
+                        welcomeColor1 = welcomeColor1 + 1
+                     if welcomeColor2 < 181:
+                         welcomeColor2 = welcomeColor2 + 1
+                     if welcomeColor3 > 166:
+                         welcomeColor3 = welcomeColor3 - 1
+                 screen.fill((welcomeColor1, welcomeColor2, welcomeColor3))
+                 clock.tick(200)
+                 mx, my = pygame.mouse.get_pos() 
 
-        pygame.draw.rect(screen, blue3, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2, GetSystemMetrics(0) / 2, GetSystemMetrics(1) / 2])       
+                 pygame.draw.rect(screen, blue3, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2, GetSystemMetrics(0) / 2, GetSystemMetrics(1) / 2])       
 
-        text2 = big_font.render('Why Hello!', True, white)       
-        screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 100))
-        text2 = menu_font.render('Welcome to the Grid OS community!', True, white)       
-        screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200))
-        text2 = menu_font.render('The tutorial is still being developed', True, white)       
-        screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250))
-        text2 = menu_font.render('Grid OS is also in alpha', True, (welcomeColor1, welcomeColor2, welcomeColor3))       
-        screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 300))
+                 text2 = big_font.render('Why Hello!', True, white)       
+                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 100))
+                 text2 = menu_font.render('Its as easy as setting up an account!', True, white)       
+                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200))
+                 text2 = menu_font.render('Username: ', True, white)   
+                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250))
+                 pygame.draw.rect(screen, blue2, [GetSystemMetrics(0) / 2 - len('' +str(text)) * 20 + 170, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250, 700, 50])
+                 if mx > GetSystemMetrics(0) / 2 - len('' +str(text)) * 20 + 170 and mx < GetSystemMetrics(0) / 2 - len('' +str(text)) * 20 + 170 + 700 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250 + 50:
+                     if event.type == MOUSEBUTTONDOWN and event.button == 1:
+                         editNotificationName = 1
+                 if editNotificationName == 1:
+                     if event.type == KEYDOWN:
+                        if event.key == pygame.K_a:
+                            notificationName = notificationName + 'a'
+                        if event.key == pygame.K_b:
+                            notificationName = notificationName + 'b'
+                        if event.key == pygame.K_c:
+                            notificationName = notificationName + 'c'
+                        if event.key == pygame.K_d:
+                            notificationName = notificationName + 'd'
+                        if event.key == pygame.K_e:
+                            notificationName = notificationName + 'e'
+                        if event.key == pygame.K_f:
+                            notificationName = notificationName + 'f'
+                        if event.key == pygame.K_g:
+                            notificationName = notificationName + 'g'
+                        if event.key == pygame.K_h:
+                            notificationName = notificationName + 'h'
+                        if event.key == pygame.K_i:
+                            notificationName = notificationName + 'i'
+                        if event.key == pygame.K_j:
+                            notificationName = notificationName + 'j'
+                        if event.key == pygame.K_k:
+                            notificationName = notificationName + 'k'
+                        if event.key == pygame.K_l:
+                            notificationName = notificationName + 'l'
+                        if event.key == pygame.K_m:
+                            notificationName = notificationName + 'm'
+                        if event.key == pygame.K_n:
+                            notificationName = notificationName + 'n'
+                        if event.key == pygame.K_o:
+                            notificationName = notificationName + 'o'
+                        if event.key == pygame.K_p:
+                            notificationName = notificationName + 'p'
+                        if event.key == pygame.K_q:
+                            notificationName = notificationName + 'q'
+                        if event.key == pygame.K_r:
+                            notificationName = notificationName + 'r'
+                        if event.key == pygame.K_s:
+                            notificationName = notificationName + 's'
+                        if event.key == pygame.K_t:
+                            notificationName = notificationName + 't'
+                        if event.key == pygame.K_u:
+                            notificationName = notificationName + 'u'
+                        if event.key == pygame.K_v:
+                            notificationName = notificationName + 'v'
+                        if event.key == pygame.K_w:
+                            notificationName = notificationName + 'w'
+                        if event.key == pygame.K_x:
+                            notificationName = notificationName + 'x'
+                        if event.key == pygame.K_y:
+                            notificationName = notificationName + 'y'
+                        if event.key == pygame.K_z:
+                            notificationName = notificationName + 'z'
+                        if event.key == pygame.K_SPACE:
+                            notificationName = notificationName + ' '
+                        if event.key == pygame.K_BACKSPACE:
+                            notificationName = notificationName[0:len(notificationName) - 1]
+                        pygame.time.delay(65)
+                 else:
+                    screen.blit(menu_font.render('click me', True, gray),([GetSystemMetrics(0) / 2 - 290, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250]))                   
+                 screen.blit(menu_font.render(''+str(notificationName), True, white),([GetSystemMetrics(0) / 2 - 290, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250])) 
+                 text2 = menu_font.render('Username', True, white)   
+                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250))
+                 text2 = menu_font.render('Password', True, white)   
+                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310))
+                 pygame.draw.rect(screen, blue2, [GetSystemMetrics(0) / 2 - len('' +str(text)) * 20 + 170, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310, 700, 50])
+                 if mx > GetSystemMetrics(0) / 2 - len('' +str(text)) * 20 + 170 and mx < GetSystemMetrics(0) / 2 - len('' +str(text)) * 20 + 170 + 700 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310 + 50:
+                     if event.type == MOUSEBUTTONDOWN and event.button == 1:
+                         editNotificationName = 2
+                 if editNotificationName == 2:
+                     if event.type == KEYDOWN:
+                        if event.key == pygame.K_a:
+                            notificationName2 = notificationName2 + 'a'
+                        if event.key == pygame.K_b:
+                            notificationName2 = notificationName2 + 'b'
+                        if event.key == pygame.K_c:
+                            notificationName2 = notificationName2 + 'c'
+                        if event.key == pygame.K_d:
+                            notificationName2 = notificationName2 + 'd'
+                        if event.key == pygame.K_e:
+                            notificationName2 = notificationName2 + 'e'
+                        if event.key == pygame.K_f:
+                            notificationName2 = notificationName2 + 'f'
+                        if event.key == pygame.K_g:
+                            notificationName2 = notificationName2 + 'g'
+                        if event.key == pygame.K_h:
+                            notificationName2 = notificationName2 + 'h'
+                        if event.key == pygame.K_i:
+                            notificationName2 = notificationName2 + 'i'
+                        if event.key == pygame.K_j:
+                            notificationName2 = notificationName2 + 'j'
+                        if event.key == pygame.K_k:
+                            notificationName2 = notificationName2 + 'k'
+                        if event.key == pygame.K_l:
+                            notificationName2 = notificationName2 + 'l'
+                        if event.key == pygame.K_m:
+                            notificationName2 = notificationName2 + 'm'
+                        if event.key == pygame.K_n:
+                            notificationName2 = notificationName2 + 'n'
+                        if event.key == pygame.K_o:
+                            notificationName2 = notificationName2 + 'o'
+                        if event.key == pygame.K_p:
+                            notificationName2 = notificationName2 + 'p'
+                        if event.key == pygame.K_q:
+                            notificationName2 = notificationName2 + 'q'
+                        if event.key == pygame.K_r:
+                            notificationName2 = notificationName2 + 'r'
+                        if event.key == pygame.K_s:
+                            notificationName2 = notificationName2 + 's'
+                        if event.key == pygame.K_t:
+                            notificationName2 = notificationName2 + 't'
+                        if event.key == pygame.K_u:
+                            notificationName2 = notificationName2 + 'u'
+                        if event.key == pygame.K_v:
+                            notificationName2 = notificationName2 + 'v'
+                        if event.key == pygame.K_w:
+                            notificationName2 = notificationName2 + 'w'
+                        if event.key == pygame.K_x:
+                            notificationName2 = notificationName2 + 'x'
+                        if event.key == pygame.K_y:
+                            notificationName2 = notificationName2 + 'y'
+                        if event.key == pygame.K_z:
+                            notificationName2 = notificationName2 + 'z'
+                        if event.key == pygame.K_SPACE:
+                            notificationName2 = notificationName2 + ' '
+                        if event.key == pygame.K_BACKSPACE:
+                            notificationName2 = notificationName2[0:len(notificationName2) - 1]
+                        pygame.time.delay(60)
+                 else:
+                    screen.blit(menu_font.render('click me', True, gray),([GetSystemMetrics(0) / 2 - 290, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310])) 
+                 screen.blit(menu_font.render(''+str(notificationName2), True, white),([GetSystemMetrics(0) / 2 - 290, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310]))        
 
-        pygame.draw.rect(screen, blue4, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 350, 210, 50]) 
-        text2 = menu_font.render('Ok lets start!', True, white)       
-        screen.blit(text2, ((GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 350, 100, 50))) 
+                 pygame.draw.rect(screen, blue4, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 400, 210, 50]) 
+                 text2 = menu_font.render('Ok lets start!', True, white)       
+                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 400, 100, 50))) 
 
-        if event.type == MOUSEBUTTONDOWN:
-            if event.button == 1:
-                if mx > GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 and mx < GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 + 210 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 350 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 350 + 50:
-                    rendermode = 'home'     
+                 if event.type == MOUSEBUTTONDOWN:
+                            if event.button == 1:
+                                if mx > GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 and mx < GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 + 210 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 400 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 400 + 50:
+                                    username = notificationName
+                                    password = notificationName2
+                                    pickle_out = open('user.csf', 'w')
+                                    pickle.dump(username, pickle_out)
+                                    pickle_out = open('pass.csf', 'w')
+                                    pickle.dump(password, pickle_out)
+                                    pickle_out.close()
+                                    rendermode = 'welcome 2-1'     
 
-        time_text = app_bar_font.render((time.strftime('%I:%M %p')), True, white)
-        pygame.draw.rect(screen, blue3, [GetSystemMetrics(0) - 400, GetSystemMetrics(1) - 50 , 400, 50])
-        pygame.draw.circle(screen, blue3, (GetSystemMetrics(0) - 400, GetSystemMetrics(1),), 50, 0)  
-        screen.blit(time_text,(GetSystemMetrics(0) - 100, GetSystemMetrics(1) - 30))
-        power_img = pygame.transform.scale(power_img, (25, 25))
-        screen.blit(power_img, (GetSystemMetrics(0) - 160, GetSystemMetrics(1) - 30))
-        if event.type == MOUSEBUTTONDOWN:
-            if event.button == 1:
-                if mx > GetSystemMetrics(0) - 160 and mx < GetSystemMetrics(0) - 135 and my > GetSystemMetrics(1) - 30 and my < GetSystemMetrics(1) - 5:
-                    menu = 'power'
-        if menu == 'power':
-            menuOpen(GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 250, 4, blue3, white)
-            sd_text = menu_font.render('Shut Down', True, white)           
-            screen.blit(sd_text, (GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 250))  
-            sd_text = menu_font.render('Restart', True, white)           
-            screen.blit(sd_text, (GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 200))  
-            sd_text = menu_font.render('Close Grid OS', True, white)           
-            screen.blit(sd_text, (GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 150))  
-            if event.type == MOUSEBUTTONDOWN and event.button == 1:
-                if mx > GetSystemMetrics(0) - 300 and mx < GetSystemMetrics(0):
-                    if my > GetSystemMetrics(1) - 150 and my < GetSystemMetrics(1) - 100:
-                        sys.exit()
-                    if my > GetSystemMetrics(1) - 250 and my < GetSystemMetrics(1) - 200:
-                        os.system("shutdown -s")
-                        app = 'shutdown'
-                    if my > GetSystemMetrics(1) - 200 and my < GetSystemMetrics(1) - 150:
-                        os.system("shutdown -r")
-                        app = 'shutdown'
-        pygame.display.update()
+                 time_text = app_bar_font.render((time.strftime('%I:%M %p')), True, white)
+                 pygame.draw.rect(screen, blue3, [GetSystemMetrics(0) - 400, GetSystemMetrics(1) - 50 , 400, 50])
+                 pygame.draw.circle(screen, blue3, (GetSystemMetrics(0) - 400, GetSystemMetrics(1),), 50, 0)  
+                 screen.blit(time_text,(GetSystemMetrics(0) - 100, GetSystemMetrics(1) - 30))
+                 power_img = pygame.transform.scale(power_img, (25, 25))
+                 screen.blit(power_img, (GetSystemMetrics(0) - 160, GetSystemMetrics(1) - 30))
+                 if event.type == MOUSEBUTTONDOWN:
+                     if event.button == 1:
+                         if mx > GetSystemMetrics(0) - 160 and mx < GetSystemMetrics(0) - 135 and my > GetSystemMetrics(1) - 30 and my < GetSystemMetrics(1) - 5:
+                             menu = 'power'
+                 if menu == 'power':
+                     menuOpen(GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 250, 4, blue3, white)
+                     sd_text = menu_font.render('Shut Down', True, white)           
+                     screen.blit(sd_text, (GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 250))  
+                     sd_text = menu_font.render('Restart', True, white)           
+                     screen.blit(sd_text, (GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 200))  
+                     sd_text = menu_font.render('Close Grid OS', True, white)           
+                     screen.blit(sd_text, (GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 150))  
+                     if event.type == MOUSEBUTTONDOWN and event.button == 1:
+                         if mx > GetSystemMetrics(0) - 300 and mx < GetSystemMetrics(0):
+                             if my > GetSystemMetrics(1) - 150 and my < GetSystemMetrics(1) - 100:
+                                 sys.exit()
+                             if my > GetSystemMetrics(1) - 250 and my < GetSystemMetrics(1) - 200:
+                                 os.system("shutdown -s")
+                                 app = 'shutdown'
+                             if my > GetSystemMetrics(1) - 200 and my < GetSystemMetrics(1) - 150:
+                                 os.system("shutdown -r")
+                                 app = 'shutdown'
+                 pygame.display.update()
+
+    if rendermode == 'welcome 2-1':
+                 if colorOp == 1:
+                     if welcomeColor1 == 0 and welcomeColor2 == 0 and welcomeColor3 == 255:
+                         colorOp = 2
+                     if welcomeColor1 > 0:
+                         welcomeColor1 = welcomeColor1 - 1
+                     if welcomeColor2 > 0:
+                         welcomeColor2 = welcomeColor2 - 1
+                     if welcomeColor3 < 255:
+                         welcomeColor3 = welcomeColor3 + 1
+                 if colorOp == 2:
+                     if welcomeColor1 == 40 and welcomeColor2 == 181 and welcomeColor3 == 166:
+                         colorOp = 1
+                     if welcomeColor1 < 40:
+                        welcomeColor1 = welcomeColor1 + 1
+                     if welcomeColor2 < 181:
+                         welcomeColor2 = welcomeColor2 + 1
+                     if welcomeColor3 > 166:
+                         welcomeColor3 = welcomeColor3 - 1
+                 screen.fill((welcomeColor1, welcomeColor2, welcomeColor3))
+                 clock.tick(200)
+                 mx, my = pygame.mouse.get_pos() 
+
+                 pygame.draw.rect(screen, blue3, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2, GetSystemMetrics(0) / 2, GetSystemMetrics(1) / 2])       
+
+                 pickle_in = open('user.csf', 'r')
+                 username = pickle.load(pickle_in)
+                 pickle_in = open('pass.csf', 'r')
+                 password = pickle.load(pickle_in)
+                 text2 = big_font.render('Welcome back ' +str(username), True, white)       
+                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 100))
+                 text2 = menu_font.render('Username: ', True, white)   
+                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250))
+                 notificationName = username
+                 pygame.draw.rect(screen, blue2, [GetSystemMetrics(0) / 2 - len('' +str(text)) * 20 + 170, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250, 700, 50])
+                 if mx > GetSystemMetrics(0) / 2 - len('' +str(text)) * 20 + 170 and mx < GetSystemMetrics(0) / 2 - len('' +str(text)) * 20 + 170 + 700 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250 + 50:
+                     if event.type == MOUSEBUTTONDOWN and event.button == 1:
+                         editNotificationName = 1
+                 if editNotificationName == 1:
+                     if event.type == KEYDOWN:
+                        if event.key == pygame.K_a:
+                            notificationName = notificationName + 'a'
+                        if event.key == pygame.K_b:
+                            notificationName = notificationName + 'b'
+                        if event.key == pygame.K_c:
+                            notificationName = notificationName + 'c'
+                        if event.key == pygame.K_d:
+                            notificationName = notificationName + 'd'
+                        if event.key == pygame.K_e:
+                            notificationName = notificationName + 'e'
+                        if event.key == pygame.K_f:
+                            notificationName = notificationName + 'f'
+                        if event.key == pygame.K_g:
+                            notificationName = notificationName + 'g'
+                        if event.key == pygame.K_h:
+                            notificationName = notificationName + 'h'
+                        if event.key == pygame.K_i:
+                            notificationName = notificationName + 'i'
+                        if event.key == pygame.K_j:
+                            notificationName = notificationName + 'j'
+                        if event.key == pygame.K_k:
+                            notificationName = notificationName + 'k'
+                        if event.key == pygame.K_l:
+                            notificationName = notificationName + 'l'
+                        if event.key == pygame.K_m:
+                            notificationName = notificationName + 'm'
+                        if event.key == pygame.K_n:
+                            notificationName = notificationName + 'n'
+                        if event.key == pygame.K_o:
+                            notificationName = notificationName + 'o'
+                        if event.key == pygame.K_p:
+                            notificationName = notificationName + 'p'
+                        if event.key == pygame.K_q:
+                            notificationName = notificationName + 'q'
+                        if event.key == pygame.K_r:
+                            notificationName = notificationName + 'r'
+                        if event.key == pygame.K_s:
+                            notificationName = notificationName + 's'
+                        if event.key == pygame.K_t:
+                            notificationName = notificationName + 't'
+                        if event.key == pygame.K_u:
+                            notificationName = notificationName + 'u'
+                        if event.key == pygame.K_v:
+                            notificationName = notificationName + 'v'
+                        if event.key == pygame.K_w:
+                            notificationName = notificationName + 'w'
+                        if event.key == pygame.K_x:
+                            notificationName = notificationName + 'x'
+                        if event.key == pygame.K_y:
+                            notificationName = notificationName + 'y'
+                        if event.key == pygame.K_z:
+                            notificationName = notificationName + 'z'
+                        if event.key == pygame.K_SPACE:
+                            notificationName = notificationName + ' '
+                        if event.key == pygame.K_BACKSPACE:
+                            notificationName = notificationName[0:len(notificationName) - 1]
+                        pygame.time.delay(65)
+                 else:
+                    screen.blit(menu_font.render('click me', True, gray),([GetSystemMetrics(0) / 2 - 290, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250]))                   
+                 screen.blit(menu_font.render(''+str(notificationName), True, white),([GetSystemMetrics(0) / 2 - 290, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250])) 
+                 text2 = menu_font.render('Username', True, white)   
+                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250))
+                 text2 = menu_font.render('Password', True, white)   
+                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310))
+                 pygame.draw.rect(screen, blue2, [GetSystemMetrics(0) / 2 - len('' +str(text)) * 20 + 170, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310, 700, 50])
+                 if mx > GetSystemMetrics(0) / 2 - len('' +str(text)) * 20 + 170 and mx < GetSystemMetrics(0) / 2 - len('' +str(text)) * 20 + 170 + 700 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310 + 50:
+                     if event.type == MOUSEBUTTONDOWN and event.button == 1:
+                         editNotificationName = 2
+                 if editNotificationName == 2:
+                     if event.type == KEYDOWN:
+                        if event.key == pygame.K_a:
+                            notificationName2 = notificationName2 + 'a'
+                        if event.key == pygame.K_b:
+                            notificationName2 = notificationName2 + 'b'
+                        if event.key == pygame.K_c:
+                            notificationName2 = notificationName2 + 'c'
+                        if event.key == pygame.K_d:
+                            notificationName2 = notificationName2 + 'd'
+                        if event.key == pygame.K_e:
+                            notificationName2 = notificationName2 + 'e'
+                        if event.key == pygame.K_f:
+                            notificationName2 = notificationName2 + 'f'
+                        if event.key == pygame.K_g:
+                            notificationName2 = notificationName2 + 'g'
+                        if event.key == pygame.K_h:
+                            notificationName2 = notificationName2 + 'h'
+                        if event.key == pygame.K_i:
+                            notificationName2 = notificationName2 + 'i'
+                        if event.key == pygame.K_j:
+                            notificationName2 = notificationName2 + 'j'
+                        if event.key == pygame.K_k:
+                            notificationName2 = notificationName2 + 'k'
+                        if event.key == pygame.K_l:
+                            notificationName2 = notificationName2 + 'l'
+                        if event.key == pygame.K_m:
+                            notificationName2 = notificationName2 + 'm'
+                        if event.key == pygame.K_n:
+                            notificationName2 = notificationName2 + 'n'
+                        if event.key == pygame.K_o:
+                            notificationName2 = notificationName2 + 'o'
+                        if event.key == pygame.K_p:
+                            notificationName2 = notificationName2 + 'p'
+                        if event.key == pygame.K_q:
+                            notificationName2 = notificationName2 + 'q'
+                        if event.key == pygame.K_r:
+                            notificationName2 = notificationName2 + 'r'
+                        if event.key == pygame.K_s:
+                            notificationName2 = notificationName2 + 's'
+                        if event.key == pygame.K_t:
+                            notificationName2 = notificationName2 + 't'
+                        if event.key == pygame.K_u:
+                            notificationName2 = notificationName2 + 'u'
+                        if event.key == pygame.K_v:
+                            notificationName2 = notificationName2 + 'v'
+                        if event.key == pygame.K_w:
+                            notificationName2 = notificationName2 + 'w'
+                        if event.key == pygame.K_x:
+                            notificationName2 = notificationName2 + 'x'
+                        if event.key == pygame.K_y:
+                            notificationName2 = notificationName2 + 'y'
+                        if event.key == pygame.K_z:
+                            notificationName2 = notificationName2 + 'z'
+                        if event.key == pygame.K_SPACE:
+                            notificationName2 = notificationName2 + ' '
+                        if event.key == pygame.K_BACKSPACE:
+                            notificationName2 = notificationName2[0:len(notificationName2) - 1]
+                        pygame.time.delay(60)
+                 else:
+                    screen.blit(menu_font.render('click me', True, gray),([GetSystemMetrics(0) / 2 - 290, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310])) 
+                 screen.blit(menu_font.render(''+str(notificationName2), True, white),([GetSystemMetrics(0) / 2 - 290, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310]))        
+
+                 pygame.draw.rect(screen, blue4, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 400, 210, 50]) 
+                 text2 = menu_font.render('sign in!', True, white)       
+                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 400, 100, 50))) 
+
+                 if event.type == MOUSEBUTTONDOWN:
+                            if event.button == 1:
+                                if mx > GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 and mx < GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 + 210 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 400 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 400 + 50:
+                                    usernameS = notificationName
+                                    passwordS = notificationName2
+                                    if passwordS == password:
+                                        if usernameS == username:
+                                            rendermode = 'home'
+                                    else:
+                                        text2 = menu_font.render('Incorrect', True, red)       
+                                        screen.blit(text2, ((GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 500, 100, 50)))                   
+
+                 time_text = app_bar_font.render((time.strftime('%I:%M %p')), True, white)
+                 pygame.draw.rect(screen, blue3, [GetSystemMetrics(0) - 400, GetSystemMetrics(1) - 50 , 400, 50])
+                 pygame.draw.circle(screen, blue3, (GetSystemMetrics(0) - 400, GetSystemMetrics(1),), 50, 0)  
+                 screen.blit(time_text,(GetSystemMetrics(0) - 100, GetSystemMetrics(1) - 30))
+                 power_img = pygame.transform.scale(power_img, (25, 25))
+                 screen.blit(power_img, (GetSystemMetrics(0) - 160, GetSystemMetrics(1) - 30))
+                 if event.type == MOUSEBUTTONDOWN:
+                     if event.button == 1:
+                         if mx > GetSystemMetrics(0) - 160 and mx < GetSystemMetrics(0) - 135 and my > GetSystemMetrics(1) - 30 and my < GetSystemMetrics(1) - 5:
+                             menu = 'power'
+                 if menu == 'power':
+                     menuOpen(GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 250, 4, blue3, white)
+                     sd_text = menu_font.render('Shut Down', True, white)           
+                     screen.blit(sd_text, (GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 250))  
+                     sd_text = menu_font.render('Restart', True, white)           
+                     screen.blit(sd_text, (GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 200))  
+                     sd_text = menu_font.render('Close Grid OS', True, white)           
+                     screen.blit(sd_text, (GetSystemMetrics(0) - 300, GetSystemMetrics(1) - 150))  
+                     if event.type == MOUSEBUTTONDOWN and event.button == 1:
+                         if mx > GetSystemMetrics(0) - 300 and mx < GetSystemMetrics(0):
+                             if my > GetSystemMetrics(1) - 150 and my < GetSystemMetrics(1) - 100:
+                                 sys.exit()
+                             if my > GetSystemMetrics(1) - 250 and my < GetSystemMetrics(1) - 200:
+                                 os.system("shutdown -s")
+                                 app = 'shutdown'
+                             if my > GetSystemMetrics(1) - 200 and my < GetSystemMetrics(1) - 150:
+                                 os.system("shutdown -r")
+                                 app = 'shutdown'
+                 pygame.display.update()
 
     if rendermode == 'shutdown':
         if colorOp == 1:
