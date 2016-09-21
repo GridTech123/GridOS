@@ -145,6 +145,10 @@ try:
     print "Width =", GetSystemMetrics(0)
     print "Height =", GetSystemMetrics(1)
     os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % ( GetSystemMetrics(0) / 4, 1)
+    if GetSystemMetrics(0) < 200 or GetSystemMetrics(1) < 200:
+        os.chdir('html')
+        os.startfile('screenError.html')
+        os.chdir('..')        
     pygame.init()
     screen_x = GetSystemMetrics(0)
     screen_y = GetSystemMetrics(1)
