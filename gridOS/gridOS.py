@@ -72,8 +72,13 @@ try:
     file_img = pygame.image.load("file.png")
     power_img = pygame.image.load("power-button-outline.png")
     warning_img = pygame.image.load("exclamation-mark-inside-a-circle.png")
+    question_img = pygame.image.load("question-mark.png")
     os.chdir('..')
 except:
+     os.chdir('..')
+     os.chdir('html')
+     os.startfile('bootHelp.html')
+     os.chdir('..')
      root = Tk()
      root.title("Boot error")
      root["padx"] = 20
@@ -116,6 +121,9 @@ editNotificationName = 0
 try:
     from win32api import GetSystemMetrics
 except:
+     os.chdir('html')
+     os.startfile('bootHelp.html')
+     os.chdir('..')
      root = Tk()
      root.title("Boot error")
      root["padx"] = 20
@@ -152,6 +160,9 @@ try:
     #pygame.display.set_icon(logo_img)
     pygame.display.set_caption("Grid OS")
 except:
+     os.chdir('html')
+     os.startfile('bootHelp.html')
+     os.chdir('..')
      root = Tk()
      root.title("Boot error")
      root["padx"] = 20
@@ -312,6 +323,14 @@ while True:
         screen.blit(time_text,(GetSystemMetrics(0) - 100, GetSystemMetrics(1) - 30))
         power_img = pygame.transform.scale(power_img, (25, 25))
         screen.blit(power_img, (GetSystemMetrics(0) - 160, GetSystemMetrics(1) - 30))
+        question_img = pygame.transform.scale(question_img, (25, 25))
+        screen.blit(question_img, (GetSystemMetrics(0) - 200, GetSystemMetrics(1) - 30))
+        if event.type == MOUSEBUTTONDOWN:
+            if event.button == 1:
+                if mx > GetSystemMetrics(0) - 200 and mx < GetSystemMetrics(0) - 175 and my > GetSystemMetrics(1) - 30 and my < GetSystemMetrics(1) - 5:
+                     os.chdir('html')
+                     os.startfile('accountHelp.html')
+                     os.chdir('..')
         if event.type == MOUSEBUTTONDOWN:
             if event.button == 1:
                 if mx > GetSystemMetrics(0) - 160 and mx < GetSystemMetrics(0) - 135 and my > GetSystemMetrics(1) - 30 and my < GetSystemMetrics(1) - 5:
@@ -527,6 +546,14 @@ while True:
                  screen.blit(time_text,(GetSystemMetrics(0) - 100, GetSystemMetrics(1) - 30))
                  power_img = pygame.transform.scale(power_img, (25, 25))
                  screen.blit(power_img, (GetSystemMetrics(0) - 160, GetSystemMetrics(1) - 30))
+                 question_img = pygame.transform.scale(question_img, (25, 25))
+                 screen.blit(question_img, (GetSystemMetrics(0) - 200, GetSystemMetrics(1) - 30))
+                 if event.type == MOUSEBUTTONDOWN:
+                     if event.button == 1:
+                         if mx > GetSystemMetrics(0) - 200 and mx < GetSystemMetrics(0) - 175 and my > GetSystemMetrics(1) - 30 and my < GetSystemMetrics(1) - 5:
+                              os.chdir('html')
+                              os.startfile('accountHelp.html')
+                              os.chdir('..')
                  if event.type == MOUSEBUTTONDOWN:
                      if event.button == 1:
                          if mx > GetSystemMetrics(0) - 160 and mx < GetSystemMetrics(0) - 135 and my > GetSystemMetrics(1) - 30 and my < GetSystemMetrics(1) - 5:
@@ -744,6 +771,14 @@ while True:
                  screen.blit(time_text,(GetSystemMetrics(0) - 100, GetSystemMetrics(1) - 30))
                  power_img = pygame.transform.scale(power_img, (25, 25))
                  screen.blit(power_img, (GetSystemMetrics(0) - 160, GetSystemMetrics(1) - 30))
+                 question_img = pygame.transform.scale(question_img, (25, 25))
+                 screen.blit(question_img, (GetSystemMetrics(0) - 200, GetSystemMetrics(1) - 30))
+                 if event.type == MOUSEBUTTONDOWN:
+                     if event.button == 1:
+                         if mx > GetSystemMetrics(0) - 200 and mx < GetSystemMetrics(0) - 175 and my > GetSystemMetrics(1) - 30 and my < GetSystemMetrics(1) - 5:
+                              os.chdir('html')
+                              os.startfile('accountHelp.html')
+                              os.chdir('..')
                  if event.type == MOUSEBUTTONDOWN:
                      if event.button == 1:
                          if mx > GetSystemMetrics(0) - 160 and mx < GetSystemMetrics(0) - 135 and my > GetSystemMetrics(1) - 30 and my < GetSystemMetrics(1) - 5:
