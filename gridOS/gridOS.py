@@ -302,24 +302,24 @@ while True:
         text2 = menu_font.render('Do you have a Grid OS account?', True, white)       
         screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 100))     
 
-        pygame.draw.rect(screen, blue4, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200, 100, 50])  
-        pygame.draw.rect(screen, blue4, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 300, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200, 100, 50]) 
+        pygame.draw.rect(screen, blue4, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 + 500, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200, 100, 50])  
+        pygame.draw.rect(screen, blue4, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 + 610, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200, 100, 50]) 
 
         text2 = menu_font.render('Yes', True, white)       
-        screen.blit(text2, ((GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200, 100, 50))) 
+        screen.blit(text2, ((GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 + 500, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200, 100, 50))) 
 
         text2 = menu_font.render('No', True, white)       
-        screen.blit(text2, ((GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 300, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200, 100, 50))) 
+        screen.blit(text2, ((GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 + 610, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200, 100, 50))) 
 
         if event.type == MOUSEBUTTONDOWN:
             if event.button == 1:
-                if mx > GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 300 and mx < GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 300 + 100 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200 + 50:
-                    rendermode = 'welcome 1-1'
+                if mx > GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 + 500 and mx < GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 500 + 100 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200 + 50:
+                    rendermode = 'welcome 2-1'
 
         if event.type == MOUSEBUTTONDOWN:
             if event.button == 1:
-                if mx > GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 and mx < GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 + 100 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200 + 50:
-                    rendermode = 'welcome 2-1'     
+                if mx > GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 + 610 and mx < GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 610 + 100 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200 + 50:
+                    rendermode = 'welcome 1-1'     
 
         time_text = app_bar_font.render((time.strftime('%I:%M %p')), True, white)
         pygame.draw.rect(screen, blue3, [GetSystemMetrics(0) - 400, GetSystemMetrics(1) - 50 , 400, 50])
@@ -386,13 +386,13 @@ while True:
                  pygame.draw.rect(screen, blue3, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2, GetSystemMetrics(0) / 2, GetSystemMetrics(1) / 2])       
 
                  text2 = big_font.render('Why Hello!', True, white)       
-                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 100))
+                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - 480, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 100)))
                  text2 = menu_font.render('Its as easy as setting up an account!', True, white)       
-                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200))
+                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - 480, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 200)))
                  text2 = menu_font.render('Username: ', True, white)   
-                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250))
-                 pygame.draw.rect(screen, blue2, [GetSystemMetrics(0) / 2 - len('' +str(text)) * 20 + 170, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250, 700, 50])
-                 if mx > GetSystemMetrics(0) / 2 - len('' +str(text)) * 20 + 170 and mx < GetSystemMetrics(0) / 2 - len('' +str(text)) * 20 + 170 + 700 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250 + 50:
+                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - 480, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250)))
+                 pygame.draw.rect(screen, blue2, [GetSystemMetrics(0) / 2 - 480 + 180, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250, 700, 50])
+                 if mx > GetSystemMetrics(0) / 2 - 480 + 180 and mx < GetSystemMetrics(0) / 2 - 480 + 180 + 700 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250 + 50:
                      if event.type == MOUSEBUTTONDOWN and event.button == 1:
                          editNotificationName = 1
                  if editNotificationName == 1:
@@ -457,12 +457,12 @@ while True:
                  else:
                     screen.blit(menu_font.render('click me', True, gray),([GetSystemMetrics(0) / 2 - 290, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250]))                   
                  screen.blit(menu_font.render(''+str(notificationName), True, white),([GetSystemMetrics(0) / 2 - 290, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250])) 
-                 text2 = menu_font.render('Username', True, white)   
-                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250))
+                 #text2 = menu_font.render('Username', True, white)   
+                 #screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250))
                  text2 = menu_font.render('Password', True, white)   
-                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310))
-                 pygame.draw.rect(screen, blue2, [GetSystemMetrics(0) / 2 - len('' +str(text)) * 20 + 170, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310, 700, 50])
-                 if mx > GetSystemMetrics(0) / 2 - len('' +str(text)) * 20 + 170 and mx < GetSystemMetrics(0) / 2 - len('' +str(text)) * 20 + 170 + 700 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310 + 50:
+                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - 480, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310)))
+                 pygame.draw.rect(screen, blue2, [GetSystemMetrics(0) / 2 - 480 + 180, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310, 700, 50])
+                 if mx > GetSystemMetrics(0) / 2 - 480 + 180 and mx < GetSystemMetrics(0) / 2 - 480 + 180 + 700 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310 + 50:
                      if event.type == MOUSEBUTTONDOWN and event.button == 1:
                          editNotificationName = 2
                  if editNotificationName == 2:
@@ -528,13 +528,13 @@ while True:
                     screen.blit(menu_font.render('click me', True, gray),([GetSystemMetrics(0) / 2 - 290, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310])) 
                  screen.blit(menu_font.render(''+str(notificationName2), True, white),([GetSystemMetrics(0) / 2 - 290, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310]))        
 
-                 pygame.draw.rect(screen, blue4, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 400, 210, 50]) 
+                 pygame.draw.rect(screen, blue4, [GetSystemMetrics(0) / 2 - 480, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 400, 210, 50]) 
                  text2 = menu_font.render('Ok lets start!', True, white)       
-                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 400, 100, 50))) 
+                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - 480, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 400, 100, 50))) 
 
                  if event.type == MOUSEBUTTONDOWN:
                             if event.button == 1:
-                                if mx > GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 and mx < GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100 + 210 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 400 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 400 + 50:
+                                if mx > GetSystemMetrics(0) / 2 - 480 and mx < GetSystemMetrics(0) / 2 - 480 + 210 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 400 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 400 + 50:
                                     username = notificationName
                                     password = notificationName2
                                     pickle_out = open('user.csf', 'w')
@@ -612,12 +612,12 @@ while True:
                  pickle_in = open('pass.csf', 'r')
                  password = pickle.load(pickle_in)
                  text2 = big_font.render('Welcome back ' +str(username), True, white)       
-                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 100))
+                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - 480, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 100)))
                  text2 = menu_font.render('Username: ', True, white)   
-                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250))
+                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - 480, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250)))
                  notificationName = username
-                 pygame.draw.rect(screen, blue2, [GetSystemMetrics(0) / 2 - len('' +str(text)) * 20 + 170, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250, 700, 50])
-                 if mx > GetSystemMetrics(0) / 2 - len('' +str(text)) * 20 + 170 and mx < GetSystemMetrics(0) / 2 - len('' +str(text)) * 20 + 170 + 700 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250 + 50:
+                 pygame.draw.rect(screen, blue2, [GetSystemMetrics(0) / 2 - 480 + 180, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250, 700, 50])
+                 if mx > GetSystemMetrics(0) / 2 - 480 + 180 and mx < GetSystemMetrics(0) / 2 - 480 + 180 + 700 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250 + 50:
                      if event.type == MOUSEBUTTONDOWN and event.button == 1:
                          editNotificationName = 1
                  if editNotificationName == 1:
@@ -683,11 +683,11 @@ while True:
                     screen.blit(menu_font.render('click me', True, gray),([GetSystemMetrics(0) / 2 - 290, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250]))                   
                  screen.blit(menu_font.render(''+str(notificationName), True, white),([GetSystemMetrics(0) / 2 - 290, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250])) 
                  text2 = menu_font.render('Username', True, white)   
-                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250))
+                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - 480), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 250))
                  text2 = menu_font.render('Password', True, white)   
-                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - len('' +str(text)) * 20), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310))
-                 pygame.draw.rect(screen, blue2, [GetSystemMetrics(0) / 2 - len('' +str(text)) * 20 + 170, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310, 700, 50])
-                 if mx > GetSystemMetrics(0) / 2 - len('' +str(text)) * 20 + 170 and mx < GetSystemMetrics(0) / 2 - len('' +str(text)) * 20 + 170 + 700 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310 + 50:
+                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - 480), GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310))
+                 pygame.draw.rect(screen, blue2, [GetSystemMetrics(0) / 2 - 480 + 180, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310, 700, 50])
+                 if mx > GetSystemMetrics(0) / 2 - 480 + 180 and mx < GetSystemMetrics(0) / 2 - 480 + 180 + 700 and my > GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310 and my < GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310 + 50:
                      if event.type == MOUSEBUTTONDOWN and event.button == 1:
                          editNotificationName = 2
                  if editNotificationName == 2:
@@ -753,9 +753,9 @@ while True:
                     screen.blit(menu_font.render('click me', True, gray),([GetSystemMetrics(0) / 2 - 290, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310])) 
                  screen.blit(menu_font.render(''+str(notificationName2), True, white),([GetSystemMetrics(0) / 2 - 290, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 310]))        
 
-                 pygame.draw.rect(screen, blue4, [GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 400, 210, 50]) 
+                 pygame.draw.rect(screen, blue4, [GetSystemMetrics(0) / 2 - 480, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 400, 210, 50]) 
                  text2 = menu_font.render('sign in!', True, white)       
-                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - GetSystemMetrics(0) / 2 / 2 + 100, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 400, 100, 50))) 
+                 screen.blit(text2, ((GetSystemMetrics(0) / 2 - 480, GetSystemMetrics(1) / 2 - GetSystemMetrics(1) / 2 / 2 + 400, 100, 50))) 
 
                  if event.type == MOUSEBUTTONDOWN:
                             if event.button == 1:
