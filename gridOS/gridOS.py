@@ -73,6 +73,8 @@ try:
     power_img = pygame.image.load("power-button-outline.png")
     warning_img = pygame.image.load("exclamation-mark-inside-a-circle.png")
     question_img = pygame.image.load("question-mark.png")
+    menu_img = pygame.image.load("menu.png")
+    terminal_img = pygame.image.load("terminal.png")
     os.chdir('..')
 except:
      os.chdir('..')
@@ -1180,27 +1182,16 @@ while True:
 
         if not menu == 'home':
             if menu == 'sys panel':
-                menuOpen(100, 10, 5, blue3, white)
-                sd_text = menu_font.render('Shut Down', True, white)           
-                screen.blit(sd_text, (100, 10))  
-                sd_text = menu_font.render('Restart', True, white)           
-                screen.blit(sd_text, (100, 60))  
-                close_text = menu_font.render('Close GridOS', True, white)           
-                screen.blit(close_text, (100, 110))  
-                close_text = menu_font.render('System Info', True, white)           
-                screen.blit(close_text, (100, 160))  
+                screen.blit(menu_img, (100, 10))
+                pygame.draw.circle(screen, blue2, (180, 60), 50)
+                #terminal_img = pygame.transform.scale(terminal_img, (25, 25))
+                screen.blit(terminal_img, (150, 30))
+                if mx > 130 and mx < 130 + 100 and my > 10 and my < 10 + 100:
+                    if event.type == MOUSEBUTTONDOWN and event.button == 1:
+                       app = 'terminal'
+                #pygame.draw.circle(screen, blue4, (375, 75), 25)
                 if event.type == MOUSEBUTTONDOWN and event.button == 1:
-                    if mx > 100 and mx < 300:
-                        if my > 110 and my < 160:
-                            sys.exit()
-                        if my > 160 and my < 210:
-                            app = 'sysinfo'
-                        if my > 10 and my < 60:
-                            os.system("shutdown -s")
-                            app = 'shutdown'
-                        if my > 60 and my < 110:
-                            os.system("shutdown -r")
-                            app = 'shutdown'
+                    if mx > 100 + 400 or my < 10 or my > 10 + 300:
                         menu = 'home'
             if menu == 'settings':
                 menuOpen(100, 100, 3, blue3, white)
