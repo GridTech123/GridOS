@@ -1176,6 +1176,73 @@ while True:
                         pygame.time.delay(100)
                  screen.blit(menu_font.render(''+str(notificationName), True, white),(200, 200))
                     
+            if app == 'terminal':
+                appOpen(300, 300 , 700,  300, blue3, blue4)
+                pygame.draw.rect(screen, blue2, [300, 360, 700, 50])
+                if mx > 300 and mx < 300 + 700 and my > 300 and my < 300 + 50:
+                    if event.type == MOUSEBUTTONDOWN and event.button == 1:
+                        editNotificationName = True
+                if editNotificationName == True:
+                    if event.type == KEYDOWN:
+                        if event.key == pygame.K_a:
+                            notificationName = notificationName + 'a'
+                        if event.key == pygame.K_b:
+                            notificationName = notificationName + 'b'
+                        if event.key == pygame.K_c:
+                            notificationName = notificationName + 'c'
+                        if event.key == pygame.K_d:
+                            notificationName = notificationName + 'd'
+                        if event.key == pygame.K_e:
+                            notificationName = notificationName + 'e'
+                        if event.key == pygame.K_f:
+                            notificationName = notificationName + 'f'
+                        if event.key == pygame.K_g:
+                            notificationName = notificationName + 'g'
+                        if event.key == pygame.K_h:
+                            notificationName = notificationName + 'h'
+                        if event.key == pygame.K_i:
+                            notificationName = notificationName + 'i'
+                        if event.key == pygame.K_j:
+                            notificationName = notificationName + 'j'
+                        if event.key == pygame.K_k:
+                            notificationName = notificationName + 'k'
+                        if event.key == pygame.K_l:
+                            notificationName = notificationName + 'l'
+                        if event.key == pygame.K_m:
+                            notificationName = notificationName + 'm'
+                        if event.key == pygame.K_n:
+                            notificationName = notificationName + 'n'
+                        if event.key == pygame.K_o:
+                            notificationName = notificationName + 'o'
+                        if event.key == pygame.K_p:
+                            notificationName = notificationName + 'p'
+                        if event.key == pygame.K_q:
+                            notificationName = notificationName + 'q'
+                        if event.key == pygame.K_r:
+                            notificationName = notificationName + 'r'
+                        if event.key == pygame.K_s:
+                            notificationName = notificationName + 's'
+                        if event.key == pygame.K_t:
+                            notificationName = notificationName + 't'
+                        if event.key == pygame.K_u:
+                            notificationName = notificationName + 'u'
+                        if event.key == pygame.K_v:
+                            notificationName = notificationName + 'v'
+                        if event.key == pygame.K_w:
+                            notificationName = notificationName + 'w'
+                        if event.key == pygame.K_x:
+                            notificationName = notificationName + 'x'
+                        if event.key == pygame.K_y:
+                            notificationName = notificationName + 'y'
+                        if event.key == pygame.K_z:
+                            notificationName = notificationName + 'z'
+                        if event.key == pygame.K_SPACE:
+                            notificationName = notificationName + ' '
+                        if event.key == pygame.K_BACKSPACE:
+                            notificationName = ''
+                    pygame.time.delay(100)
+                screen.blit(menu_font.render(''+str(notificationName), True, white),(200, 200))
+                closeApp = True
 
             #appOpen(200, 50 , GetSystemMetrics(0) - 250,  GetSystemMetrics(1) - 100, blue3, blue4)
 
