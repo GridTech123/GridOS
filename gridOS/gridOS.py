@@ -160,7 +160,8 @@ try:
     big_font = pygame.font.SysFont('Calibri', 80)
     menu_font = pygame.font.SysFont('Calibri', 40)
     menu_font = pygame.font.SysFont('Calibri', 40)
-    app_bar_font = pygame.font.SysFont('Calibri', 25)   
+    app_bar_font = pygame.font.SysFont('Calibri', 25)
+    app_bar_font2 = pygame.font.SysFont('Calibri', 10)   
 
     #window settings
     #pygame.display.set_icon(logo_img)
@@ -928,6 +929,8 @@ while True:
         else:
             notifications2_img = pygame.transform.scale(notifications2_img, (25, 25))
             screen.blit(notifications2_img, (GetSystemMetrics(0) - 130, GetSystemMetrics(1) - 30))    
+            pygame.draw.circle(screen, blue4, [GetSystemMetrics(0) - 130, GetSystemMetrics(1) - 30,], 10)
+            screen.blit(app_bar_font.render(''+str(notifications - 1), True, black),(GetSystemMetrics(0) - 137, GetSystemMetrics(1) - 42))
         if event.type == MOUSEBUTTONDOWN:
             if event.button == 1:
                 if mx > GetSystemMetrics(0) - 130 and mx < GetSystemMetrics(0) - 105 and my > GetSystemMetrics(1) - 30 and my < GetSystemMetrics(1) - 5:
